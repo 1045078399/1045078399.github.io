@@ -1,0 +1,635 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Vast 的博客" href="http://vastmiao.cn/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Vast 的博客" href="http://vastmiao.cn/atom.xml" />
+<link rel="alternate" type="application/json" title="Vast 的博客" href="http://vastmiao.cn/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="idea,debug" />
+
+
+<link rel="canonical" href="http://vastmiao.cn/2022/02/11/debug/">
+
+
+<meta name="description" content="# DEBUG 在调试代码的时候，你的项目得 debug 模式启动，也就是点那个绿色的甲虫启动服务器，然后，就可以在代码里面断点调试啦。 下面直接看图，详细解释，每一个按钮（按钮对应图中的数字）都是什么功能。   1.rerun XXX，这个就是直接重新跑某个程序。 2. 这个相当于 eclipse 里面的 f8，直接跑完，到下一个断点停下，没有就直接跑完程序。IDEA 快捷方式 (F9)** 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="debug">
+<meta property="og:url" content="http://vastmiao.cn/2022/02/11/debug/index.html">
+<meta property="og:site_name" content="Vast 的博客">
+<meta property="og:description" content="# DEBUG 在调试代码的时候，你的项目得 debug 模式启动，也就是点那个绿色的甲虫启动服务器，然后，就可以在代码里面断点调试啦。 下面直接看图，详细解释，每一个按钮（按钮对应图中的数字）都是什么功能。   1.rerun XXX，这个就是直接重新跑某个程序。 2. 这个相当于 eclipse 里面的 f8，直接跑完，到下一个断点停下，没有就直接跑完程序。IDEA 快捷方式 (F9)** 3">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://vastmiao.cn/images/20170320131146112.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190104134334546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3MDkzNDY1,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2022-02-11T12:02:36.000Z">
+<meta property="article:modified_time" content="2022-02-11T12:16:53.053Z">
+<meta property="article:author" content="Vast 的博客">
+<meta property="article:tag" content="idea">
+<meta property="article:tag" content="debug">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://vastmiao.cn/images/20170320131146112.png">
+
+
+  <title>
+debug - IDEA - 开发工具 - 计算机科学 |
+Vast Blogs = Vast 的博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">debug
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-02-11 20:02:36 20:02:36">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-02-11T20:02:36+08:00">2022-02-11 20:02:36</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Vast Blogs</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Tools/" itemprop="item" rel="index" title="分类于 开发工具"><span itemprop="name">开发工具</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Tools/idea/" itemprop="item" rel="index" title="分类于 IDEA"><span itemprop="name">IDEA</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/02/11/debug/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Vast 的博客">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Vast 的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="debug"><a class="markdownIt-Anchor" href="#debug">#</a> DEBUG</h1>
+<p>在调试代码的时候，你的项目得<strong> debug 模式启动</strong>，也就是点那个<strong>绿色的甲虫启动</strong>服务器，然后，就可以在代码里面断点调试啦。</p>
+<p>下面直接看图，详细解释，每一个按钮（按钮对应图中的数字）都是什么功能。</p>
+<p><img data-src="/images/20170320131146112.png" alt="img"></p>
+<ul>
+<li>1.rerun XXX，这个就是直接重新跑某个程序。</li>
+<li>2. 这个相当于 eclipse 里面的 f8，直接跑完，到下一个断点停下，没有就直接跑完程序。IDEA 快捷方式 (F9)**</li>
+<li>3. 停止项目或者程序。要是自己的 main 呢，点一下就停下了，要是 Java web 项目，则点 2 下，就把服务器给停了。**</li>
+<li>4. 查看所有的断点设置情况。**</li>
+<li>5. 直接取消所有断点，让所有断点无效。</li>
+<li>6. 要是你一不小心把这个下面的布局给弄乱了，你点这个，就把下面的布局给还原咯。</li>
+<li>7. 跳转到当前代码所执行的地方，也就是说你在看代码的时候，点到其他地方，一点这个按钮，就到了程序执行到当前哪行的代码的地方。</li>
+<li>8. 下一步，如果是方法，他是不会跳进去的。就是一行行的往下走。IDEA 快捷方式 (F8),**</li>
+<li>9. 跳转到详情，如果下一行调试代码是可执行方法，就可以 f5 进去，查看这个方法的运行详细情况。重点就是点进去执行，IDEA 快捷方式 (F7 或者 alt+shift+F7),**</li>
+<li>10. 从详情跳出去，和上面的 9 相反。IDEA 快捷方式 (shift+F8),**</li>
+<li>11. 看字面意思就是跳转到那个光标所在的地方，前提是他能路上没断点拦着 (这个也很好用的，下面详细解释一下他的好处)。IDEA 快捷方式 (alt + F9),**</li>
+<li>12. 这个点开之后，可以计算你想要看的代码段的值，后面详细上图。</li>
+<li>13. 看意思，同 eclipse 里面的 watch，查看某个对象的值，自定义的对象。</li>
+<li>14. 把自定义的查看对象的值，分开到另一个 tab 页。</li>
+<li>15. 有时候当我们步入方法体之后，还想回退到方法体外，点这个按钮后，断点重新回到方法体之外。在继续还是可以再次进到方法内 **（这个很好的，假设你手快，跳过想断点的方法，然后这个 drop frame，出去之后，就可以再次 debug 啦。这个<em><strong>很是着重</strong></em>介绍一下，就算你只打一个断点，一不小心跑了，不怕，点这个，推出，然后再执行，还是会再次进入断点的。这个很管用的，要是不知道的话，就的再从头到尾的执行一遍，很是麻烦哦。所以，<strong>再使劲的强调一下这个高科技按钮</strong>。）</li>
+</ul>
+<h2 id="查看断点处的某个对象的值可以如下几个方法"><a class="markdownIt-Anchor" href="#查看断点处的某个对象的值可以如下几个方法">#</a> 查看断点处的某个对象的值，可以如下几个方法：</h2>
+<ul>
+<li>1. 选中对象后，鼠标悬停在对象上 2 秒左右</li>
+<li>2. 在 watch 里面添加这个对象，</li>
+<li>3. 下面也许会自动列出来你代码里面有的</li>
+<li>4. 使用上面图上标注的 12 的那个按钮</li>
+<li>5.alter + click，按住 alter，然后点击想看的变量，就出现啦变量的值，这个厉害，感谢 40 楼老铁的评论。</li>
+</ul>
+<p><strong>看字面意思就是跳转到那个光标所在的地方，前提是他能路上没断点拦着</strong></p>
+<p><img data-src="https://img-blog.csdnimg.cn/20190104134334546.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI3MDkzNDY1,size_16,color_FFFFFF,t_70" alt="大师兄"></p>
+<p>一般看到这个图，大概都是在 for 循环之前打了个断点，当你在一步步的跟踪代码执行的时候，遇到这个 for 循环，要是还是一步步的继续，那就得点很多下，要是循环集合很大，岂不是很费时，一般估计就会在 for 循环的后面（比如在我这个图的 39 行打个断点，来一下子跳过 for 循环）再打个断点，那么你为了一步步的跟踪代码执行，不得不继续类似的操作，添加了不少没用的断点。你这么做是因为你不知道这 run to cursor ，就是直接执行到鼠标光标处。通俗的解释一下，看我图 39 行，当前鼠标的光标就在这地方，你直接点这个 run to cursor 这个 debug 功能按钮，就会直接跳过 for 循环，运行到光标所在的位置，停下。这就省去了打 n 多个不需要的断点啦。这个按钮的功能不错吧。</p>
+
+      <div class="tags">
+          <a href="/tags/idea/" rel="tag"><i class="ic i-tag"></i> idea</a>
+          <a href="/tags/debug/" rel="tag"><i class="ic i-tag"></i> debug</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-02-11 20:16:53 20:16:53" itemprop="dateModified" datetime="2022-02-11T20:16:53+08:00">2022-02-11 20:16:53</time>
+  </span>
+  <span id="2022/02/11/debug/" class="item leancloud_visitors" data-flag-title="debug" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Vast 的博客 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Vast 的博客 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Vast 的博客 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Vast 的博客 <i class="ic i-at"><em>@</em></i>Vast 的博客
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://vastmiao.cn/2022/02/11/debug/" title="debug">http://vastmiao.cn/2022/02/11/debug/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/02/05/SQL-2/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclh3brzpj20zk0m8ann.jpg" title="SQL_2">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> SQL</span>
+  <h3>SQL_2</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/02/11/mysql/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclxp31goj20zk0m8qv5.jpg" title="SQL加强">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> SQL</span>
+  <h3>SQL加强</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#debug"><span class="toc-number">1.</span> <span class="toc-text"> DEBUG</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%AD%E7%82%B9%E5%A4%84%E7%9A%84%E6%9F%90%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%80%BC%E5%8F%AF%E4%BB%A5%E5%A6%82%E4%B8%8B%E5%87%A0%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text"> 查看断点处的某个对象的值，可以如下几个方法：</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/02/11/debug/" rel="bookmark" title="debug">debug</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Vast 的博客"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Vast 的博客</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">17</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">13</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">22</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzEwNDUwNzgzOTk=" title="https:&#x2F;&#x2F;github.com&#x2F;1045078399"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3NDk3ODU5MTY=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1749785916"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwNDUwNzgzOTlAcXEuY29t" title="mailto:1045078399@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>友链</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/02/05/SQL-2/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/02/11/mysql/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" title="List&amp;Set&amp;Map的创建及遍历">List&Set&Map的创建及遍历</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="分类于 博客搭建">博客搭建</a>
+</div>
+
+    <span><a href="/2022/01/21/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="第一篇文章">第一篇文章</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
+</div>
+
+    <span><a href="/2022/02/12/%E9%9D%A2%E8%AF%95%E9%A2%98-1/" title="面试题-1">面试题-1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/11/mysql/" title="SQL加强">SQL加强</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/01/IO/" title="IO">IO</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" title="反射">反射</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-2/" title="SQL_2">SQL_2</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/Redis%E6%80%BB%E7%BB%93/" title="Redis总结">Redis总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/" title="分类于 开发工具">开发工具</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/idea/" title="分类于 IDEA">IDEA</a>
+</div>
+
+    <span><a href="/2022/02/11/debug/" title="debug">debug</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
+</div>
+
+    <span><a href="/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" title="面试题随笔1">面试题随笔1</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Vast 的博客 @ Vast Blogs</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS12YXN0">Vast</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/02/11/debug/',
+    favicon: {
+      show: "淼",
+      hide: "淼"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9124faf20888f84ee730ba6366fa578d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</body>
+</html>

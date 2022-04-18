@@ -1,0 +1,798 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Vast 的博客" href="http://vastmiao.cn/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Vast 的博客" href="http://vastmiao.cn/atom.xml" />
+<link rel="alternate" type="application/json" title="Vast 的博客" href="http://vastmiao.cn/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Java,面试题,随笔" />
+
+
+<link rel="canonical" href="http://vastmiao.cn/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/">
+
+
+<meta name="description" content="# 面试随笔 1 点击题干查看答案   #{} 和 &amp;{} 的区别？  ${} 是 properties 文件中的变量占位符，他可以用于 xml 标签属性值和 SQL 内部，属于字符串的替换。 ${} 也可以用于把存入的参数原样的拼接到 SQL 中，但有 SQL 注入的风险，不推荐。 #{} 是 SQL 的参数占位符，Mybatis 会将 #{} 转换成？，在 SQL 执行前会使用 Pre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题随笔1">
+<meta property="og:url" content="http://vastmiao.cn/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/index.html">
+<meta property="og:site_name" content="Vast 的博客">
+<meta property="og:description" content="# 面试随笔 1 点击题干查看答案   #{} 和 &amp;{} 的区别？  ${} 是 properties 文件中的变量占位符，他可以用于 xml 标签属性值和 SQL 内部，属于字符串的替换。 ${} 也可以用于把存入的参数原样的拼接到 SQL 中，但有 SQL 注入的风险，不推荐。 #{} 是 SQL 的参数占位符，Mybatis 会将 #{} 转换成？，在 SQL 执行前会使用 Pre">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-18T11:56:02.000Z">
+<meta property="article:modified_time" content="2022-04-18T12:37:41.383Z">
+<meta property="article:author" content="Vast 的博客">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+  <title>
+面试题随笔1 - Java面试题 - 面试题 - 计算机科学 |
+Vast Blogs = Vast 的博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">面试题随笔1
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-04-18 19:56:02 19:56:02">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-04-18T19:56:02+08:00">2022-04-18 19:56:02</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Vast Blogs</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicit31ffoj20zk0m8naf.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Interview/" itemprop="item" rel="index" title="分类于 面试题"><span itemprop="name">面试题</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Interview/JavaInterview/" itemprop="item" rel="index" title="分类于 Java面试题"><span itemprop="name">Java面试题</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Vast 的博客">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Vast 的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="面试随笔1"><a class="markdownIt-Anchor" href="#面试随笔1">#</a> 面试随笔 1</h1>
+<p><span class="label danger">点击题干查看答案</span></p>
+<ol>
+<li class="quiz fill">
+<p>#{} 和 &amp;{} 的区别？</p>
+<blockquote>
+<p>${} 是 properties 文件中的变量占位符，他可以用于 xml 标签属性值和 SQL 内部，属于字符串的替换。<br>
+${} 也可以用于把存入的参数原样的拼接到 SQL 中，但有 SQL 注入的风险，不推荐。<br>
+#{} 是 SQL 的参数占位符，Mybatis 会将 #{} 转换成？，在 SQL 执行前会使用 PreparedStatement 的参数设置方法给？设置值。因为 #{} 是预编译处理，所以可以有效放在 SQL 注入</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>怎么放在 SQL 注入？</p>
+<blockquote>
+<p>使用预编译语句 (PrepareStatements)<br>
+ 过滤特殊字符 (对于无法确定固定格式的变量，一定要进行特殊符号或转译处理)</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>MySQL 的隔离级别，MySQL 的默认事务隔离界别？</p>
+<blockquote>
+<p><strong>低级别的隔离级一般支持更高的并发处理，并拥有更低的系统开销.</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>Read Uncommitted (读未提交)</strong><br>
+ 在该级别，所有事务都可以看到其他未提交的事务的执行结果。本隔离级别很少用于实际开发，因为它的性能也不比其他级别好多少。读取未提交的数据，也被称之为脏读（DirtyRead）。</p>
+</blockquote>
+<blockquote>
+<p><strong>Read Committed（读取已提交）</strong><br>
+这是大多数数据库系统的默认隔离级别（但不是 MySQL 默认的）。它满足了隔离的简单定义：一个事务只能看见已经提交事务所做的改变。<br>
+这种隔离级别 也支持所谓的不可重复读（NonrepeatableRead），因为同一事务的其他实例在该实例处理其间可能会有新的 commit，所以同一 select 可能返回不同结果。</p>
+</blockquote>
+<blockquote>
+<p><strong>Repeatable Read（可重复读）</strong><br>
+这是 MySQL 的默认事务隔离级别，它确保同一事务的多个实例在并发读取数据时，会看到同样的数据行。不过理论上，这会导致另一个棘手的问题：幻读（Phantom Read）。<br>
+简单的说，幻读指当用户读取某一范围的数据行时，另一个事务又在该范围内插入了新行，当用户再读取该范围的数据行时，会发现有新的 “幻影” 行。InnoDB 和 Falcon 存储引擎通过多版本并发控制（MVCC，Multiversion ConcurrencyControl）机制解决了该问题。</p>
+</blockquote>
+<blockquote>
+<p><strong>Serializable（可串行化）</strong><br>
+这是最高的隔离级别，它通过强制事务排序，使之不可能相互冲突，从而解决幻读问题。简言之，它是在每个读的数据行上加上共享锁。在这个级别，可能导致大量的超时现象和锁竞争。</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>HashMap 的扩容机制，HashMap 的初始化容量，new HashMap (20) 容量会是多少？</p>
+<blockquote>
+<p>当 HashMap 中的元素个数超过数组大小 (数组长度)*loadFactor (负载因子 (默认值 0.75)) 时，就会进数组扩容，把数组的长度变为原来的 2 倍。<br>
+当 HashMap 中的其中一个链表的对象个数如果达到了 8 个，此时如果数组长度没有达到 64，那么 HashMap 会先扩容解决，如果已经达到了 64，那么这个链表会变成红黑树，节点类型由 Node 变成 TreeNode 类型。当然，如果映射关系被移除后，下次执行 resize 方法时判断树的节点个数低于 6，也会再把树转换为链表。</p>
+</blockquote>
+<blockquote>
+<p>HashMap 的初始化容量为 16</p>
+</blockquote>
+<blockquote>
+<p>new HashMap (20) 容量会是 32</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>Redis 的缓存穿透，缓存雪崩，缓存击穿分别是什么，怎么解决？</p>
+<blockquote>
+<p><strong>缓存穿透:</strong> 是指缓存和数据库中都没有的数据，导致所有的请求全都落到数据库上，并且是高并发的造成数据库短时间内承受大量请求而挂掉。<br>
+<strong>解决:</strong><br>
+ 将空数据放到缓存中，设置 key-null, 同时设置短的缓存时间 (如 30 秒)，这样可以防止攻击用户反复用一个 id 暴力攻击</p>
+</blockquote>
+<blockquote>
+<p><strong>缓存雪崩:</strong> 是指缓存同一时间大面积失效，后面数据查询时都查询数据库，数据查询的压力全部落到了数据库上，导致数据库短时间内承受大量的请求而挂掉.<br>
+<strong> 解决:</strong><br>
+1. 缓存数据的过期时间随机设置 (或者加上一个随机值)，防止同一时间出现大批数据过期的现象。<br>
+2. 设置热数据永不过期。<br>
+3. 如果并发量不是特别高。可以用队列或者锁<br>
+ 4. 如果缓存数据库是分布式部署的，可以将热点的数据均匀的分布在不同的缓存数据库</p>
+</blockquote>
+<blockquote>
+<p><strong>缓存击穿:</strong> 是指缓存中没有但是数据库中有的数据 (一般是缓存时间到期)，这时由于并发用户特别多，同时读取缓存没有读到数据，又同时去数据库中取数据，引起数据库压力瞬间增大，造成过大压力。和缓存雪崩不同的是，缓存击穿指并发查询同一条数据，缓存雪崩是不同数据都过期了，很多数据都查询不到，从而查询数据库。<br>
+<strong>解决:</strong><br>
+1. 设置热数据永不过期<br>
+ 2. 使用互斥锁避免大量请求同时查询数据库<br>
+ 3. 做好熔断、降级，防止系统崩溃</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>Linux 的常用命令</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cd</td>
+<td>切换路径</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示工作路径</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>查看目录下文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>拷贝</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>移动</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>查看文件</td>
+</tr>
+<tr>
+<td>find</td>
+<td>文件搜索</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>设置权限</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>事务的 ACID 属性是哪些？</p>
+<blockquote>
+<p><strong>原子性 (Atomic):</strong><br>
+ 事务中各项操作，要么全做要么全不做，任何一项操作的失败都会导致整个事务的失败<br>
+<strong>一致性 (Consistent):</strong><br>
+ 事务结束后系统状态是一致的<br>
+<strong>隔离性 (Isolated)：</strong><br>
+并发执行的事务彼此无法看到对方的中间状态；<br>
+<strong>持久性 (Durable)：</strong><br>
+事务完成后所做的改动都会被持久化，即使发生灾难性的失败。通过日志和同步备份可以在故障发生后重建数据。</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>线程和进程的区别或关系</p>
+<blockquote>
+<p>进程和线程的主要差别在于它们是不同的操作系统资源管理方式。<br>
+进程有独立的地址空间，一个进程崩溃后，在保护模式下不会对其它进程产生影响，而线程只是一个进程中的不同执行路径。<br>
+线程有自己的堆栈和局部变量，但线程之间没有单独的地址空间，一个线程死掉就等于整个进程死掉，所以多进程的程序要比多线程的程序健壮，但在进程切换时，耗费资源较大，效率要差一些。但对于一些要求同时进行并且又要共享某些变量的并发操作，只能用线程，不能用进程。<br>
+1. 一个程序至少有一个进程，一个进程至少有一个线程.<br>
+2. 线程的划分尺度小于进程，使得多线程程序的并发性高。<br>
+3. 另外，进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率。<br>
+4. 线程在执行过程中与进程还是有区别的。每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制。<br>
+5. 从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。这就是进程和线程的重要区别。<br>
+<strong>优缺点:</strong><br>
+ 线程和进程在使用上各有优缺点：线程执行开销小，但不利于资源的管理和保护；<br>
+而进程正相反。同时，线程适合于在 SMP 机器上运行，而进程则可以跨机器迁移。</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>byte b1 = -1;  byte b2 = -128;  byte sum = (byte)(b1 + b2);  sum 等于多少？</p>
+<blockquote>
+<p>127</p>
+</blockquote>
+</li>
+<li class="quiz fill">
+<p>@Transactional 注解不生效的原因有哪些？</p>
+<blockquote>
+<p>1. 异常被捕获后没有抛出<br>
+ 2. 抛出非运行时异常<br>
+ 如果指定了回滚异常类型为 Exception，那么就可以回滚非 RuntimeException 类型异常了<br>
+ 3. 方法内部直接调用<br>
+ 4. 新开启一个线程<br>
+ 5 注解到 private 方法上<br>
+ private 修饰的方式，spring 无法生成动态代理。<br>
+6. 数据库本身不支持<br>
+ mysql 数据库，必须设置数据库引擎为 InnoDB。<br>
+7. 事务传播属性设置错误<br>
+ 比如设置了：PROPAGATION_NOT_SUPPORIED（以非事务的方式执行，如果当前有事务则把当前事务挂起）。</p>
+</blockquote>
+</li>
+</ol>
+
+      <div class="tags">
+          <a href="/tags/Java/" rel="tag"><i class="ic i-tag"></i> Java</a>
+          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"><i class="ic i-tag"></i> 面试题</a>
+          <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"><i class="ic i-tag"></i> 随笔</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-04-18 20:37:41 20:37:41" itemprop="dateModified" datetime="2022-04-18T20:37:41+08:00">2022-04-18 20:37:41</time>
+  </span>
+  <span id="2022/04/18/面试题随笔1/" class="item leancloud_visitors" data-flag-title="面试题随笔1" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Vast 的博客 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Vast 的博客 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Vast 的博客 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Vast 的博客 <i class="ic i-at"><em>@</em></i>Vast 的博客
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://vastmiao.cn/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" title="面试题随笔1">http://vastmiao.cn/2022/04/18/面试题随笔1/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/04/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclflwv2aj20zk0m84qp.jpg" title="跨域问题总结">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 总结</span>
+  <h3>跨域问题总结</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/04/18/MyBatis-Plus%E7%BF%BB%E9%A1%B5/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4baakhj20zk0m8h5q.jpg" title="MyBatis-Plus翻页">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 总结</span>
+  <h3>MyBatis-Plus翻页</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%A2%E8%AF%95%E9%9A%8F%E7%AC%941"><span class="toc-number">1.</span> <span class="toc-text"> 面试随笔 1</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/02/12/%E9%9D%A2%E8%AF%95%E9%A2%98-1/" rel="bookmark" title="面试题-1">面试题-1</a></li><li class="active"><a href="/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" rel="bookmark" title="面试题随笔1">面试题随笔1</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Vast 的博客"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Vast 的博客</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">17</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">13</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">22</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzEwNDUwNzgzOTk=" title="https:&#x2F;&#x2F;github.com&#x2F;1045078399"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3NDk3ODU5MTY=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1749785916"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwNDUwNzgzOTlAcXEuY29t" title="mailto:1045078399@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>友链</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/04/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/04/18/MyBatis-Plus%E7%BF%BB%E9%A1%B5/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/28/JavaBean/" title="JavaBean">JavaBean</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/11/mysql/" title="SQL加强">SQL加强</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" title="多态">多态</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="跨域问题总结">跨域问题总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" title="反射">反射</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/Redis%E6%80%BB%E7%BB%93/" title="Redis总结">Redis总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQLBasics/" title="分类于 SQL基础">SQL基础</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-1/" title="SQL_1">SQL_1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/" title="分类于 开发工具">开发工具</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/idea/" title="分类于 IDEA">IDEA</a>
+</div>
+
+    <span><a href="/2022/02/11/debug/" title="debug">debug</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" title="List&amp;Set&amp;Map的创建及遍历">List&Set&Map的创建及遍历</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" title="继承">继承</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Vast 的博客 @ Vast Blogs</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS12YXN0">Vast</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/04/18/面试题随笔1/',
+    favicon: {
+      show: "淼",
+      hide: "淼"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',quiz: {
+      choice: "单选题",
+      multiple: "多选题",
+      true_false: "判断题",
+      essay: "问答题",
+      gap_fill: "填空题",
+      mistake: "错题备注"
+    },
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9124faf20888f84ee730ba6366fa578d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</body>
+</html>

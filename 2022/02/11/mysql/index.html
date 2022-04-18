@@ -1,0 +1,950 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Vast 的博客" href="http://vastmiao.cn/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Vast 的博客" href="http://vastmiao.cn/atom.xml" />
+<link rel="alternate" type="application/json" title="Vast 的博客" href="http://vastmiao.cn/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="SQL" />
+
+
+<link rel="canonical" href="http://vastmiao.cn/2022/02/11/mysql/">
+
+
+<meta name="description" content="# SQL 加强  # 1、三范式  第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库，是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值（一个列中只能存储一个值）； 第二范式（2NF）要求数据库表中的每个实例或行必须可以被惟一地区分（主键）； 第三范式（3NF）要求一个数据库表中不包含已在其它表中已包含的非主键段信息。  # 2、SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL加强">
+<meta property="og:url" content="http://vastmiao.cn/2022/02/11/mysql/index.html">
+<meta property="og:site_name" content="Vast 的博客">
+<meta property="og:description" content="# SQL 加强  # 1、三范式  第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库，是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值（一个列中只能存储一个值）； 第二范式（2NF）要求数据库表中的每个实例或行必须可以被惟一地区分（主键）； 第三范式（3NF）要求一个数据库表中不包含已在其它表中已包含的非主键段信息。  # 2、SQL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://vastmiao.cn/images/aodsihoas.png">
+<meta property="og:image" content="http://vastmiao.cn/images/2022211.png">
+<meta property="og:image" content="http://vastmiao.cn/images/SQL_JOINS.png">
+<meta property="og:image" content="http://vastmiao.cn/images/20222222.png">
+<meta property="article:published_time" content="2022-02-11T12:17:45.000Z">
+<meta property="article:modified_time" content="2022-02-11T12:31:31.972Z">
+<meta property="article:author" content="Vast 的博客">
+<meta property="article:tag" content="SQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://vastmiao.cn/images/aodsihoas.png">
+
+
+  <title>
+SQL加强 - SQL - SQL - 计算机科学 |
+Vast Blogs = Vast 的博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">SQL加强
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-02-11 20:17:45 20:17:45">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-02-11T20:17:45+08:00">2022-02-11 20:17:45</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Vast Blogs</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis3attqj20zk0m8k7l.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/SQL/" itemprop="item" rel="index" title="分类于 SQL"><span itemprop="name">SQL</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/SQL/SQL/" itemprop="item" rel="index" title="分类于 SQL"><span itemprop="name">SQL</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/02/11/mysql/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Vast 的博客">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Vast 的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="sql加强"><a class="markdownIt-Anchor" href="#sql加强">#</a> SQL 加强</h1>
+<p><img data-src="/images/aodsihoas.png" alt="sql"></p>
+<h2 id="1-三范式"><a class="markdownIt-Anchor" href="#1-三范式">#</a> 1、三范式</h2>
+<ul>
+<li>第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库，是指数据库表的每一列都是不可分割的基本数据项，同一列中不能有多个值（一个列中只能存储一个值）；</li>
+<li>第二范式（2NF）要求数据库表中的每个实例或行必须可以被惟一地区分（主键）；</li>
+<li>第三范式（3NF）要求一个数据库表中不包含已在其它表中已包含的非主键段信息。</li>
+</ul>
+<h2 id="2-sql-分类"><a class="markdownIt-Anchor" href="#2-sql-分类">#</a> 2、SQL 分类</h2>
+<h3 id="21-数据查询语言dql"><a class="markdownIt-Anchor" href="#21-数据查询语言dql">#</a> 2.1、数据查询语言（DQL）</h3>
+<p>其语句，也称为 “数据检索语句”，用以从表中获得数据，确定数据怎样在应用程序给出。保留字 SELECT 是 DQL（也是所有 SQL）用得最多的动词，其他 DQL 常用的保留字有 WHERE，ORDER BY，GROUP BY 和 HAVING。这些 DQL 保留字常与其他类型的 SQL 语句一起使用。</p>
+<h3 id="22-数据定义语言ddl"><a class="markdownIt-Anchor" href="#22-数据定义语言ddl">#</a> 2.2、数据定义语言（DDL）</h3>
+<p>其语句包括动词 CREATE 和 DROP。在数据库中创建新表或删除表（CREAT TABLE 或 DROP TABLE）；为表加入索引等。DDL 包括许多与人数据库目录中获得数据有关的保留字。它也是动作查询的一部分。</p>
+<h3 id="23-数据操作语言dml"><a class="markdownIt-Anchor" href="#23-数据操作语言dml">#</a> 2.3、数据操作语言（DML）</h3>
+<p>其语句包括动词 INSERT，UPDATE 和 DELETE。它们分别用于添加，修改和删除表中的行，Insert / Update / Delete。也称为动作查询语言。</p>
+<h3 id="24-事务处理语言tcl"><a class="markdownIt-Anchor" href="#24-事务处理语言tcl">#</a> 2.4、事务处理语言（TCL）</h3>
+<p>它的语句能确保被 DML 语句影响的表的所有行及时得以更新。TCL 语句包括 BEGIN TRANSACTION，COMMIT 和 ROLLBACK。</p>
+<h3 id="25-数据库控制语言dcl"><a class="markdownIt-Anchor" href="#25-数据库控制语言dcl">#</a> 2.5、数据库控制语言（DCL）</h3>
+<p>它的语句通过 GRANT 或 REVOKE 获得许可，确定单个用户和用户组对数据库对象的访问。某些 RDBMS 可用 GRANT 或 REVOKE 控制对表单个列的访问。</p>
+<h3 id="26-指针控制语言ccl"><a class="markdownIt-Anchor" href="#26-指针控制语言ccl">#</a> 2.6、指针控制语言（CCL）</h3>
+<p>它的语句，像 DECLARE CURSOR，FETCH INTO 和 UPDATE WHERE CURRENT 用于对一个或多个表单独行的操作。</p>
+<h2 id="3-练习的表结构"><a class="markdownIt-Anchor" href="#3-练习的表结构">#</a> 3、练习的表结构</h2>
+<p>表结构<br>
+<img data-src="/images/2022211.png" alt="表结构"></p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SET</span> FOREIGN_KEY_CHECKS<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="2"></td><td><pre></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token comment">-- Table structure for `dept`</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="6"></td><td><pre><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="8"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>DEPTNO<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'表示部门编号，由两位数字所组成'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="9"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>DNAME<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">14</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'部门名称，最多由14个字符所组成'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="10"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>LOC<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'部门所在的位置'</span></pre></td></tr><tr><td data-num="11"></td><td><pre><span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="12"></td><td><pre></pre></td></tr><tr><td data-num="13"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="14"></td><td><pre><span class="token comment">-- Records of dept</span></pre></td></tr><tr><td data-num="15"></td><td><pre><span class="token comment">-- ACCOUNTING: 财务部</span></pre></td></tr><tr><td data-num="16"></td><td><pre><span class="token comment">-- RESEARCH: 调研部</span></pre></td></tr><tr><td data-num="17"></td><td><pre><span class="token comment">-- SALES: 销售部</span></pre></td></tr><tr><td data-num="18"></td><td><pre><span class="token comment">-- OPERATIONS: 运营部</span></pre></td></tr><tr><td data-num="19"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="20"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'10'</span><span class="token punctuation">,</span> <span class="token string">'ACCOUNTING'</span><span class="token punctuation">,</span> <span class="token string">'NEW YORK'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'20'</span><span class="token punctuation">,</span> <span class="token string">'RESEARCH'</span><span class="token punctuation">,</span> <span class="token string">'DALLAS'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="22"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'30'</span><span class="token punctuation">,</span> <span class="token string">'SALES'</span><span class="token punctuation">,</span> <span class="token string">'CHICAGO'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="23"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>dept<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'40'</span><span class="token punctuation">,</span> <span class="token string">'OPERATIONS'</span><span class="token punctuation">,</span> <span class="token string">'BOSTON'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre></pre></td></tr><tr><td data-num="25"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token comment">-- Table structure for `emp`</span></pre></td></tr><tr><td data-num="27"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="28"></td><td><pre><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="29"></td><td><pre><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="30"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>EMPNO<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'雇员的编号，由四位数字所组成'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="31"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>ENAME<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'雇员的姓名，由10位字符所组成'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="32"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>JOB<span class="token punctuation">`</span></span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span>  <span class="token keyword">COMMENT</span> <span class="token string">'雇员的职位'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="33"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>MGR<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>  <span class="token keyword">COMMENT</span> <span class="token string">'雇员对应的领导编号，领导也是雇员'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="34"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>HIREDATE<span class="token punctuation">`</span></span> <span class="token keyword">date</span> <span class="token keyword">COMMENT</span> <span class="token string">'雇员的雇佣日期'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="35"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>SAL<span class="token punctuation">`</span></span> <span class="token keyword">double</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'基本工资，其中有两位小数，五位整数，一共是七位'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="36"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>COMM<span class="token punctuation">`</span></span> <span class="token keyword">double</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'奖金，佣金(销售才有)'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="37"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>DEPTNO<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">'雇员所在的部门编号'</span></pre></td></tr><tr><td data-num="38"></td><td><pre><span class="token punctuation">)</span><span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="39"></td><td><pre></pre></td></tr><tr><td data-num="40"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="41"></td><td><pre><span class="token comment">-- Records of emp</span></pre></td></tr><tr><td data-num="42"></td><td><pre><span class="token comment">-- CLERK: 职员</span></pre></td></tr><tr><td data-num="43"></td><td><pre><span class="token comment">-- SALESMAN: 销售员</span></pre></td></tr><tr><td data-num="44"></td><td><pre><span class="token comment">-- MANAGER: 部门经理</span></pre></td></tr><tr><td data-num="45"></td><td><pre><span class="token comment">-- ANALYST: 分析员</span></pre></td></tr><tr><td data-num="46"></td><td><pre><span class="token comment">-- PRESIDENT: 总裁</span></pre></td></tr><tr><td data-num="47"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="48"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7369'</span><span class="token punctuation">,</span> <span class="token string">'SMITH'</span><span class="token punctuation">,</span> <span class="token string">'CLERK'</span><span class="token punctuation">,</span> <span class="token string">'7902'</span><span class="token punctuation">,</span> <span class="token string">'1980-12-17'</span><span class="token punctuation">,</span> <span class="token string">'800.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="49"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7499'</span><span class="token punctuation">,</span> <span class="token string">'ALLEN'</span><span class="token punctuation">,</span> <span class="token string">'SALESMAN'</span><span class="token punctuation">,</span> <span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'1981-02-20'</span><span class="token punctuation">,</span> <span class="token string">'1600.00'</span><span class="token punctuation">,</span> <span class="token string">'300.00'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="50"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7521'</span><span class="token punctuation">,</span> <span class="token string">'WARD'</span><span class="token punctuation">,</span> <span class="token string">'SALESMAN'</span><span class="token punctuation">,</span> <span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'1981-02-22'</span><span class="token punctuation">,</span> <span class="token string">'1250.00'</span><span class="token punctuation">,</span> <span class="token string">'500.00'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="51"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7566'</span><span class="token punctuation">,</span> <span class="token string">'JONES'</span><span class="token punctuation">,</span> <span class="token string">'MANAGER'</span><span class="token punctuation">,</span> <span class="token string">'7839'</span><span class="token punctuation">,</span> <span class="token string">'1981-04-02'</span><span class="token punctuation">,</span> <span class="token string">'2975.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="52"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7654'</span><span class="token punctuation">,</span> <span class="token string">'MARTIN'</span><span class="token punctuation">,</span> <span class="token string">'SALESMAN'</span><span class="token punctuation">,</span> <span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'1981-09-28'</span><span class="token punctuation">,</span> <span class="token string">'1250.00'</span><span class="token punctuation">,</span> <span class="token string">'1400.00'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="53"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'BLAKE'</span><span class="token punctuation">,</span> <span class="token string">'MANAGER'</span><span class="token punctuation">,</span> <span class="token string">'7839'</span><span class="token punctuation">,</span> <span class="token string">'1981-05-01'</span><span class="token punctuation">,</span> <span class="token string">'2850.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="54"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7782'</span><span class="token punctuation">,</span> <span class="token string">'CLARK'</span><span class="token punctuation">,</span> <span class="token string">'MANAGER'</span><span class="token punctuation">,</span> <span class="token string">'7839'</span><span class="token punctuation">,</span> <span class="token string">'1981-06-09'</span><span class="token punctuation">,</span> <span class="token string">'2450.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'10'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="55"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7788'</span><span class="token punctuation">,</span> <span class="token string">'SCOTT'</span><span class="token punctuation">,</span> <span class="token string">'ANALYST'</span><span class="token punctuation">,</span> <span class="token string">'7566'</span><span class="token punctuation">,</span> <span class="token string">'1987-04-19'</span><span class="token punctuation">,</span> <span class="token string">'3000.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="56"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7839'</span><span class="token punctuation">,</span> <span class="token string">'KING'</span><span class="token punctuation">,</span> <span class="token string">'PRESIDENT'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'1981-11-17'</span><span class="token punctuation">,</span> <span class="token string">'5000.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'10'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="57"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7844'</span><span class="token punctuation">,</span> <span class="token string">'TURNER'</span><span class="token punctuation">,</span> <span class="token string">'SALESMAN'</span><span class="token punctuation">,</span> <span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'1981-09-08'</span><span class="token punctuation">,</span> <span class="token string">'1500.00'</span><span class="token punctuation">,</span> <span class="token string">'0.00'</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="58"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7876'</span><span class="token punctuation">,</span> <span class="token string">'ADAMS'</span><span class="token punctuation">,</span> <span class="token string">'CLERK'</span><span class="token punctuation">,</span> <span class="token string">'7788'</span><span class="token punctuation">,</span> <span class="token string">'1987-05-23'</span><span class="token punctuation">,</span> <span class="token string">'1100.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="59"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7900'</span><span class="token punctuation">,</span> <span class="token string">'JAMES'</span><span class="token punctuation">,</span> <span class="token string">'CLERK'</span><span class="token punctuation">,</span> <span class="token string">'7698'</span><span class="token punctuation">,</span> <span class="token string">'1981-12-03'</span><span class="token punctuation">,</span> <span class="token string">'950.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'30'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="60"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7902'</span><span class="token punctuation">,</span> <span class="token string">'FORD'</span><span class="token punctuation">,</span> <span class="token string">'ANALYST'</span><span class="token punctuation">,</span> <span class="token string">'7566'</span><span class="token punctuation">,</span> <span class="token string">'1981-12-03'</span><span class="token punctuation">,</span> <span class="token string">'3000.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'20'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="61"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>emp<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'7934'</span><span class="token punctuation">,</span> <span class="token string">'MILLER'</span><span class="token punctuation">,</span> <span class="token string">'CLERK'</span><span class="token punctuation">,</span> <span class="token string">'7782'</span><span class="token punctuation">,</span> <span class="token string">'1982-01-23'</span><span class="token punctuation">,</span> <span class="token string">'1300.00'</span><span class="token punctuation">,</span> <span class="token boolean">null</span><span class="token punctuation">,</span> <span class="token string">'10'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="62"></td><td><pre></pre></td></tr><tr><td data-num="63"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="64"></td><td><pre><span class="token comment">-- Table structure for `salgrade`</span></pre></td></tr><tr><td data-num="65"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="66"></td><td><pre><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="67"></td><td><pre><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="68"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>GRADE<span class="token punctuation">`</span></span> <span class="token keyword">bigint</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span> <span class="token keyword">COMMENT</span> <span class="token string">'工资等级'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="69"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>LOSAL<span class="token punctuation">`</span></span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>  <span class="token keyword">COMMENT</span> <span class="token string">'此等级的最低工资'</span><span class="token punctuation">,</span></pre></td></tr><tr><td data-num="70"></td><td><pre>  <span class="token identifier"><span class="token punctuation">`</span>HISAL<span class="token punctuation">`</span></span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span>  <span class="token keyword">COMMENT</span> <span class="token string">'此等级的最高工资'</span></pre></td></tr><tr><td data-num="71"></td><td><pre><span class="token punctuation">)</span> <span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="72"></td><td><pre></pre></td></tr><tr><td data-num="73"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="74"></td><td><pre><span class="token comment">-- Records of salgrade</span></pre></td></tr><tr><td data-num="75"></td><td><pre><span class="token comment">-- ----------------------------</span></pre></td></tr><tr><td data-num="76"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'700'</span><span class="token punctuation">,</span> <span class="token string">'1200'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="77"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'1201'</span><span class="token punctuation">,</span> <span class="token string">'1400'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="78"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'1401'</span><span class="token punctuation">,</span> <span class="token string">'2000'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="79"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'2001'</span><span class="token punctuation">,</span> <span class="token string">'3000'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="80"></td><td><pre><span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> <span class="token identifier"><span class="token punctuation">`</span>salgrade<span class="token punctuation">`</span></span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'3001'</span><span class="token punctuation">,</span> <span class="token string">'9999'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h1 id="二-单表查询"><a class="markdownIt-Anchor" href="#二-单表查询">#</a> 二、单表查询</h1>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> <span class="token punctuation">[</span><span class="token keyword">DISTINCT</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token operator">|</span> 字段 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 字段 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> 表名称 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">WHERE</span> 条件<span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> 字段 <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 字段 <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span><span class="token punctuation">,</span> …<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><h2 id="1-全列和投影查询"><a class="markdownIt-Anchor" href="#1-全列和投影查询">#</a> 1、全列和投影查询</h2>
+<p>一个是查询表中所有列，另一个是查询表中部分的列。</p>
+<p>练习：</p>
+<ul>
+<li>查询所有员工信息</li>
+<li>查询每个员工的编号、姓名、职位</li>
+<li>查询所有部门信息</li>
+</ul>
+<h2 id="2-消除重复"><a class="markdownIt-Anchor" href="#2-消除重复">#</a> 2、消除重复</h2>
+<p><strong>DISTINCT</strong> 关键字可以用于一列，也可以用于多列。比如：SELECT distinct job,deptno FROM emp; 只有当 job 和 deptno 相同，才认为是重复的数据。</p>
+<p>练习：</p>
+<ul>
+<li>查询所有有员工的部门编号</li>
+<li>查询有员工的部门和职位</li>
+</ul>
+<h2 id="3-算术运算符"><a class="markdownIt-Anchor" href="#3-算术运算符">#</a> 3、算术运算符</h2>
+<ul>
+<li>对 NUMBER 型数据可以使用算数操作符创建表达式（+  -  *  /）；</li>
+<li>对 DATE 型数据可以使用算数操作符创建表达式（+  -）。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询所有员工的年薪</li>
+<li>查询所有员工的年薪（使用别名）</li>
+</ul>
+<h2 id="4-过滤查询"><a class="markdownIt-Anchor" href="#4-过滤查询">#</a> 4、过滤查询</h2>
+<h3 id="41-过滤查询值的注意事项"><a class="markdownIt-Anchor" href="#41-过滤查询值的注意事项">#</a> 4.1、过滤查询值的注意事项</h3>
+<ul>
+<li><strong>字符串和日期要用单引号扩起来</strong>；</li>
+<li><strong>数字类型直接书写</strong>；</li>
+<li>字符串是大小写不敏感的，日期值是格式大小写敏感的；</li>
+<li>字符串若要大小写敏感，需要添加 binary 关键字。（SELECT * FROM dept WHERE BINARY DNAME = ‘sales’）</li>
+</ul>
+<h3 id="42-空值"><a class="markdownIt-Anchor" href="#42-空值">#</a> 4.2、空值</h3>
+<p>用 NULL 表示，注意：</p>
+<ul>
+<li>空值是指不可用、未分配的值，也就是没有值；</li>
+<li><strong>空值不等于零或空格，也不表示空字符串</strong>；</li>
+<li><strong>任意类型都可以支持空值</strong>，也就是说任何类型的字段都可以允许空值作为值的存在；</li>
+<li><strong>包括空值的任何算术表达式都等于空</strong>。</li>
+<li>使用函数 IFNULL (expr1, expr2)，若 expr1 不是 NULL，IFNULL () 返回 expr1，否则它返回 expr2</li>
+</ul>
+<h3 id="43-常用算术比较运算符"><a class="markdownIt-Anchor" href="#43-常用算术比较运算符">#</a> 4.3、常用算术比较运算符</h3>
+<ul>
+<li>=，!=，&lt;&gt;，&gt;，&gt;=，&lt;，&lt;=</li>
+<li>BETWEEN … AND  …：在两值之间 （包含开始和结尾，数学中的闭区间）</li>
+<li>IN：匹配列出的值；如：IN (1, 2, 3, 4)</li>
+<li>LIKE ：匹配字符串模式， _ 、%，LIKE 运算符必须使用通配符才有意义；
+<ul>
+<li>匹配单个字符：_ 表示 1 个；
+<ul>
+<li>匹配任意多个字符：% 表示 0 个、1 个、多个。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>IS NULL：是否为空</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>
+<p>查询所有员工的年薪 ((月薪 + 奖金) * 12)</p>
+</li>
+<li>
+<p>查询有奖金的员工信息</p>
+</li>
+<li>
+<p>查询公司的老板</p>
+</li>
+<li>
+<p>查询出基本工资高于 1500 的所有员工信息</p>
+</li>
+<li>
+<p>查询名字叫 SCOTT 的员工所从事的工作</p>
+</li>
+<li>
+<p>查询 1981 年入职的员工信息</p>
+</li>
+<li>
+<p>查询年薪小于 3W 的员工</p>
+</li>
+<li>
+<p>查询所有不是销售人员的员工信息</p>
+</li>
+<li>
+<p>查询工资在 2000-3000 之间的员工信息</p>
+</li>
+<li>
+<p>查询 1981 年入职的员工</p>
+</li>
+<li>
+<p>查询工资为 800 或 1600 或 3000 的员工</p>
+</li>
+<li>
+<p>查询出所有雇员姓名是以 A 开头的全部雇员信息。</p>
+</li>
+<li>
+<p>查询出雇员姓名第二个字母是 M 的全部雇员信息。</p>
+</li>
+<li>
+<p>查询出雇员姓名任意位置上包含字母 A 的全部雇员信息。</p>
+</li>
+</ul>
+<h3 id="44-逻辑运算符"><a class="markdownIt-Anchor" href="#44-逻辑运算符">#</a> 4.4、逻辑运算符</h3>
+<ul>
+<li>AND：如果组合的条件都是 true，返回 true；</li>
+<li>OR：如果组合的条件 之一是 true ，返回 true；</li>
+<li>NOT：如果下面的条件是 false，返回 true。</li>
+<li>优先级规则：比较运算符 &gt; NOT &gt; AND &gt; OR。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询姓名中有 e 或者 a 的员工姓名</li>
+<li>查询工资在 1500~3000 之间的全部员工信息</li>
+<li>查询工资不在 2000-3000 之间的员工信息</li>
+<li>查询工资不为 800 或 1600 或 3000 的员工</li>
+<li>查询出职位是办事员 (CLERK) 或者是销售人员 (SALESMAN) 的全部信息，且工资在 1000 以上</li>
+</ul>
+<h2 id="5-结果排序"><a class="markdownIt-Anchor" href="#5-结果排序">#</a> 5、结果排序</h2>
+<ul>
+<li>ASC：升序，缺省</li>
+<li>DESC：降序</li>
+<li>ORDER BY 子句出现在 SELECT 语句后执行；</li>
+<li>ORDER BY 可以使用别名，<strong>但不能使用加了引号的别名或列名来排序，没有效果</strong>。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询所有员工信息，按照工资排序</li>
+<li>查询所有员工信息，按照年薪降序排序</li>
+<li>查询所有员工信息，按照部门和年薪降序排序</li>
+</ul>
+<h1 id="三-多表查询概述理解"><a class="markdownIt-Anchor" href="#三-多表查询概述理解">#</a> 三、多表查询概述（理解）</h1>
+<h2 id="1-为什么使用多表查询"><a class="markdownIt-Anchor" href="#1-为什么使用多表查询">#</a> 1、为什么使用多表查询</h2>
+<p>需要查询的数据分散在多张表中，只有联合多张表才能查询出期望的数据。<br>
+比如：emp 表存储了员工的信息，dept 表存储了部门的信息，而需求是查询出员工的编号、姓名以及对应部门的名称。</p>
+<h2 id="2-笛卡尔积"><a class="markdownIt-Anchor" href="#2-笛卡尔积">#</a> 2、笛卡尔积</h2>
+<ul>
+<li>数学中：假设集合 A = {a, b}，集合 B = {0, 1, 2}，则两个集合的笛卡尔积为 {(a, 0), (a, 1), (a, 2), (b, 0), (b, 1), (b, 2)}。</li>
+<li>MySQL 中：多表查询会产生笛卡尔积，比如：SELECT * FROM emp, dept，实际运行环境下，应避免使用全笛卡尔集。</li>
+</ul>
+<p>解决方案：在 WHERE 语句中加入有效的连接条件 --&gt; 一般是等值连接，注意：连接 n 张表，至少需要 n-1 个连接条件。</p>
+<h2 id="3-多表查询分类"><a class="markdownIt-Anchor" href="#3-多表查询分类">#</a> 3、多表查询分类</h2>
+<ul>
+<li>内连接查询
+<ul>
+<li>隐式内连接查询</li>
+<li>显示内连接查询</li>
+</ul>
+</li>
+<li>外连接查询
+<ul>
+<li>左外连接查询</li>
+<li>右外连接查询</li>
+<li>全外连接查询  韦恩图<br>
+<img data-src="/images/SQL_JOINS.png" alt="多表查询"></li>
+</ul>
+</li>
+</ul>
+<h1 id="四-内连接查询"><a class="markdownIt-Anchor" href="#四-内连接查询">#</a> 四、内连接查询</h1>
+<h2 id="1-隐式内连接查询"><a class="markdownIt-Anchor" href="#1-隐式内连接查询">#</a> 1、隐式内连接查询</h2>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> <span class="token punctuation">[</span><span class="token keyword">DISTINCT</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token operator">|</span> 字段 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 字段 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span><span class="token punctuation">,</span> …<span class="token punctuation">]</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> 表名称 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>表名称 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span><span class="token punctuation">,</span> …<span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">WHERE</span> 条件<span class="token punctuation">(</span>S<span class="token punctuation">)</span><span class="token operator">/</span>消除笛卡尔积连接<span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> 排序字段 <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 排序字段 <span class="token punctuation">[</span><span class="token keyword">ASC</span><span class="token operator">|</span><span class="token keyword">DESC</span><span class="token punctuation">]</span><span class="token punctuation">,</span> …<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><ul>
+<li>在 WHERE 子句中写入连接条件；</li>
+<li><strong>当多个表中有重名列时，必须在列的名字前加上表名作为前缀或者表的别名</strong>（使用别名更简单，性能更高）；</li>
+<li>等值连接是连接操作中最常见的一种，通常是在存在主外键约束条件的多表上建立的，连接条件中的两个字段通过等号建立等值关系。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询员工编号，员工名称，员工所属部门的编号和名称</li>
+<li>查询员工的姓名，工资，所在部门的名称，以及工资的等级</li>
+</ul>
+<h2 id="2-显式内连接查询"><a class="markdownIt-Anchor" href="#2-显式内连接查询">#</a> 2、显式内连接查询</h2>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> table1<span class="token punctuation">.</span><span class="token keyword">column</span><span class="token punctuation">,</span> table2<span class="token punctuation">.</span><span class="token keyword">column</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> table1 <span class="token punctuation">[</span><span class="token keyword">INNER</span><span class="token punctuation">]</span> <span class="token keyword">JOIN</span> table2 <span class="token keyword">ON</span> table1<span class="token punctuation">.</span>column1 <span class="token operator">=</span> table2<span class="token punctuation">.</span>column2</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">WHERE</span> 条件</pre></td></tr></table></figure><p>显示内连接查询：查询的结果和隐式内连接一模一样。区别在于：</p>
+<ul>
+<li>显示内连接可以看到 [INNER] JOIN；</li>
+<li>消除笛卡尔积条件使用写在 ON 子句。</li>
+</ul>
+<h1 id="五-外连接查询"><a class="markdownIt-Anchor" href="#五-外连接查询">#</a> 五、外连接查询</h1>
+<h2 id="1-需求"><a class="markdownIt-Anchor" href="#1-需求">#</a> 1、需求</h2>
+<p>查询出员工的编号，名字，薪水和所在部门的名称（使用内连接查询），SQL 如下：</p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> emp<span class="token punctuation">.</span>EMPNO<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>SAL<span class="token punctuation">,</span> dept<span class="token punctuation">.</span>DNAME <span class="token keyword">FROM</span> emp <span class="token keyword">JOIN</span> dept <span class="token keyword">ON</span> emp<span class="token punctuation">.</span>DEPTNO <span class="token operator">=</span> dept<span class="token punctuation">.</span>DEPTNO</pre></td></tr></table></figure><p>执行完会发现，没有部门的员工则查询不出来。</p>
+<h2 id="2-左外连接查询"><a class="markdownIt-Anchor" href="#2-左外连接查询">#</a> 2、左外连接查询</h2>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> table1<span class="token punctuation">.</span><span class="token keyword">column</span><span class="token punctuation">,</span> table2<span class="token punctuation">.</span><span class="token keyword">column</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> table1 <span class="token keyword">LEFT</span> <span class="token punctuation">[</span><span class="token keyword">OUTER</span><span class="token punctuation">]</span> <span class="token keyword">JOIN</span> table2 <span class="token keyword">ON</span> table1<span class="token punctuation">.</span>column1 <span class="token operator">=</span> table2<span class="token punctuation">.</span>column2</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">WHERE</span> 条件</pre></td></tr></table></figure><figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> emp<span class="token punctuation">.</span>EMPNO<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>SAL<span class="token punctuation">,</span> dept<span class="token punctuation">.</span>DNAME </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> emp <span class="token keyword">LEFT</span> <span class="token keyword">JOIN</span> dept <span class="token keyword">ON</span> emp<span class="token punctuation">.</span>DEPTNO <span class="token operator">=</span> dept<span class="token punctuation">.</span>DEPTNO</pre></td></tr></table></figure><p>查询出 JOIN 左边表的全部数据查询出来，JOIN 右边的表不匹配的数据使用 NULL 来填充数据。</p>
+<h2 id="3-右外连接查询"><a class="markdownIt-Anchor" href="#3-右外连接查询">#</a> 3、右外连接查询</h2>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> table1<span class="token punctuation">.</span><span class="token keyword">column</span><span class="token punctuation">,</span> table2<span class="token punctuation">.</span><span class="token keyword">column</span></pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> table1 <span class="token keyword">RIGHT</span> <span class="token punctuation">[</span><span class="token keyword">OUTER</span><span class="token punctuation">]</span> <span class="token keyword">JOIN</span> table2 <span class="token keyword">ON</span> table1<span class="token punctuation">.</span>column1 <span class="token operator">=</span> table2<span class="token punctuation">.</span>column2</pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">WHERE</span> 条件</pre></td></tr></table></figure><figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> emp<span class="token punctuation">.</span>EMPNO<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>ENAME<span class="token punctuation">,</span> emp<span class="token punctuation">.</span>SAL<span class="token punctuation">,</span> dept<span class="token punctuation">.</span>DNAME <span class="token keyword">FROM</span> dept <span class="token keyword">RIGHT</span> <span class="token keyword">JOIN</span> emp <span class="token keyword">ON</span> emp<span class="token punctuation">.</span>DEPTNO <span class="token operator">=</span> dept<span class="token punctuation">.</span>DEPTNO</pre></td></tr></table></figure><p>查询出 JOIN 右边表的全部数据查询出来，JOIN 左边的表不匹配的数据使用 NULL 来填充数据。</p>
+<h1 id="六-分组函数"><a class="markdownIt-Anchor" href="#六-分组函数">#</a> 六、分组函数</h1>
+<h2 id="1-函数分类"><a class="markdownIt-Anchor" href="#1-函数分类">#</a> 1、函数分类</h2>
+<ul>
+<li>单行函数：将每条数据进行独立的计算，然后每条数据得到一条结果；</li>
+<li>多行函数：多条数据同时计算，最终得到一条结果数据。也成为聚集函数、分组函数，主要用于完成一些统计功能等等。</li>
+</ul>
+<h2 id="2-多行函数"><a class="markdownIt-Anchor" href="#2-多行函数">#</a> 2、多行函数</h2>
+<ul>
+<li>COUNT ()：查询表中的数据记录；</li>
+<li>AVG ()：求出平均值；</li>
+<li>SUM ()：求和；</li>
+<li>MAX ()：求出最大值；</li>
+<li>MIN ()：求出最小值。</li>
+</ul>
+<p>注意：</p>
+<ul>
+<li>统计函数忽略空值，可以使用 IFNULL， 因为是 NULL 不会影响汇总值，但会影响汇总数量；</li>
+<li>不能在 where 语句中使用分组函数。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询所有员工每个月的平均工资及总工资</li>
+<li>查询月薪在 2000 以上的员工总人数</li>
+<li>查询员工最高工资和最低工资差距</li>
+</ul>
+<h1 id="七-分组查询"><a class="markdownIt-Anchor" href="#七-分组查询">#</a> 七、分组查询</h1>
+<h2 id="1-什么是分组及其应用"><a class="markdownIt-Anchor" href="#1-什么是分组及其应用">#</a> 1、什么是分组及其应用</h2>
+<p>分组情况 1：按照性别分组，男生一组，女生一组，之后可以统计男生和女生的数量；<br>
+分组情况 2：按照年龄段分组，80 后一组，90 后一组；<br>
+分组情况 3：按照籍贯分组，广东一组，湖南一组，江西一组。</p>
+<h2 id="2-分组语法"><a class="markdownIt-Anchor" href="#2-分组语法">#</a> 2、分组语法</h2>
+<p>在 MySQL 使用 GROUP BY 来实现分组。语法如下：</p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> <span class="token punctuation">[</span><span class="token keyword">DISTINCT</span><span class="token punctuation">]</span> <span class="token operator">*</span><span class="token operator">|</span>分组字段<span class="token number">1</span> <span class="token punctuation">[</span>别名<span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 分组字段<span class="token number">2</span> <span class="token punctuation">[</span>别名<span class="token punctuation">]</span> <span class="token punctuation">,</span>…<span class="token punctuation">]</span> <span class="token operator">|</span> 统计函数</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> 表名称 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>表名称 <span class="token punctuation">[</span>别名<span class="token punctuation">]</span> <span class="token punctuation">,</span> …<span class="token punctuation">]</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">WHERE</span> 条件<span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> 分组字段<span class="token number">1</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 分组字段<span class="token number">2</span> <span class="token punctuation">,</span>…<span class="token punctuation">]</span><span class="token punctuation">]</span></pre></td></tr><tr><td data-num="5"></td><td><pre><span class="token punctuation">[</span><span class="token keyword">ORDER</span> <span class="token keyword">BY</span> 排序字段 <span class="token keyword">ASC</span> <span class="token operator">|</span> <span class="token keyword">DESC</span> <span class="token punctuation">[</span><span class="token punctuation">,</span> 排序字段 <span class="token keyword">ASC</span> <span class="token operator">|</span> <span class="token keyword">DESC</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr></table></figure><p>分组效果：</p>
+<ul>
+<li>使用 GROUP BY 子句将表分成小组；</li>
+<li>结果集隐式按升序排列，如果需要改变排序方式可以使用 ORDER BY 子句。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>按照职位分组，求出每个职位的最高和最低工资</li>
+<li>查询出每一个部门员工的平均奖金</li>
+</ul>
+<h2 id="3-使用分组注意"><a class="markdownIt-Anchor" href="#3-使用分组注意">#</a> 3、使用分组注意</h2>
+<ul>
+<li>SELECT 子句出现的字段，要不在统计函数中，要不出现在 GROUP BY 子句中，否则不合理（整体与个体）；</li>
+<li>在 GROUP BY 子句中出现的字段，可以不出现在 SELECT 列表中；</li>
+<li>统计函数可以单独使用，SQL 中可以没有 GROUP BY 子句；</li>
+<li>在 GROUP BY 子句中，可以按单列进行分组，也可以在多列上进行分组，多列分组就是按照多个字段的组合进行分组，最终的结果也会按照分组字段进行排序显示。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询出每一个部门员工的平均工资</li>
+<li>查询各个部门和岗位的平均工资</li>
+</ul>
+<h2 id="4-分组限定"><a class="markdownIt-Anchor" href="#4-分组限定">#</a> 4、分组限定</h2>
+<ul>
+<li>不能在 WHERE 子句中对分组限定，限制组须使用 HAVING 子句 (分组之后过滤需要使用 HAVING 子句)；</li>
+<li>不能在 WHERE 子句中使用统计函数，而在 HAVING 子句可使用统计函数。</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询部门平均工资高于 2000 的部门及其平均工资</li>
+<li>查询在 80, 81, 82 年各进公司多少人</li>
+</ul>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> <span class="token keyword">YEAR</span><span class="token punctuation">(</span>HIREDATE<span class="token punctuation">)</span> y<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>EMPNO<span class="token punctuation">)</span> </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> emp </pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> <span class="token keyword">YEAR</span><span class="token punctuation">(</span>HIREDATE<span class="token punctuation">)</span> </pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">HAVING</span> y <span class="token operator">BETWEEN</span> <span class="token string">'1980'</span> <span class="token operator">AND</span> <span class="token string">'1982'</span></pre></td></tr></table></figure><ul>
+<li>查询各个管理人员下员工的平均工资，其中最低工资不能低于 1300，不计算老板</li>
+</ul>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> MGR<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>SAL<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">MIN</span><span class="token punctuation">(</span>SAL<span class="token punctuation">)</span> <span class="token keyword">AS</span> minsal </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> emp </pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> MGR </pre></td></tr><tr><td data-num="4"></td><td><pre><span class="token keyword">HAVING</span> MGR <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token operator">AND</span> minsal <span class="token operator">>=</span> <span class="token number">1300</span></pre></td></tr></table></figure><h1 id="八-单行函数了解"><a class="markdownIt-Anchor" href="#八-单行函数了解">#</a> 八、单行函数（了解）</h1>
+<h2 id="1-日期函数"><a class="markdownIt-Anchor" href="#1-日期函数">#</a> 1、日期函数</h2>
+<ul>
+<li>NOW ()：获取当前时间；</li>
+<li>DAY (date)：获取日期中的天数，范围是从 1 到 31；</li>
+<li>HOUR (time)：返回 time 对应的小时数，范围是从 0 到 23；</li>
+<li>MINUTE (time)：返回 time 对应的分钟数，范围是从 0 到 59；</li>
+<li>MONTH (date)：返回 date 对应的月份，范围时从 1 到 12；</li>
+<li>YEAR (date)：返回 date 对应的年份，范围是从 1000 到 9999；</li>
+<li>LAST_DAY (date)：获取一个日期或日期时间值，返回该月最后一天对应的值。</li>
+</ul>
+<h2 id="2-日期转换为字符串"><a class="markdownIt-Anchor" href="#2-日期转换为字符串">#</a> 2、日期转换为字符串</h2>
+<p>**DATE_FORMAT (date, format)：** 把日期转换为字符串。其中 format 中常见格式化符号如下（更多参见 MySQL 5.5 中文参考手册 549 页）：</p>
+<p><img data-src="/images/20222222.png" alt="format 格式化符号"></p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> DATE_FORMAT<span class="token punctuation">(</span><span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'%Y-%m-%d'</span><span class="token punctuation">)</span></pre></td></tr></table></figure><h1 id="九-子查询"><a class="markdownIt-Anchor" href="#九-子查询">#</a> 九、子查询</h1>
+<h2 id="1-定义和作用"><a class="markdownIt-Anchor" href="#1-定义和作用">#</a> 1、定义和作用</h2>
+<p>子查询指的就是在一个查询之中嵌套了其他的若干查询。</p>
+<p>在使用 SELECT 语句查询数据时，有时候会遇到这样的情况，在 WHERE 查询条件中的限制条件不是一个确定的值，而是一个来自于另一个查询的结果（比如查询大于平均工资的员工）。</p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> select_list</pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span>	<span class="token keyword">table</span></pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">WHERE</span>	expr operator <span class="token punctuation">(</span><span class="token keyword">SELECt</span> select_list <span class="token keyword">FROM</span> <span class="token keyword">table</span><span class="token punctuation">)</span></pre></td></tr></table></figure><p>注意：</p>
+<ul>
+<li>子查询一般出现在 FROM 和 WHERE 子句中；</li>
+<li>子查询要使用圆括号括起来；</li>
+<li>将子查询放在比较运算符的右边（增强可读性）；</li>
+<li>子查询在主查询前执行一次，主查询使用子查询的结果；但不宜嵌套过多。</li>
+</ul>
+<h2 id="2-分类"><a class="markdownIt-Anchor" href="#2-分类">#</a> 2、分类</h2>
+<p>按查询结果分类：</p>
+<ul>
+<li>单行单列：只包含一个字段的查询，返回的查询结果也只包含一行数据；(WHERE 子句)</li>
+<li>多行单列：只包含了一个字段，但返回的查询结果可能多行或者零行；(WHERE 子句)</li>
+<li>多行多列：包含多个字段的返回，查询结果可能是单行或者多行，好比是一张表。(FROM 子句)</li>
+</ul>
+<h2 id="3-单行单列"><a class="markdownIt-Anchor" href="#3-单行单列">#</a> 3、单行单列</h2>
+<p>一般用于 WHERE 之后的子查询，子查询结果是一行一列记录。<br>
+使用单行记录比较运算符：=、&gt;、&gt;=、&lt;、&lt;=、&lt;&gt;。</p>
+<p>练习：</p>
+<ul>
+<li>查询出工资比 MARTIN 还要高的全部雇员信息</li>
+</ul>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> emp <span class="token keyword">WHERE</span> sal <span class="token operator">></span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> sal <span class="token keyword">FROM</span> emp <span class="token keyword">WHERE</span> ename <span class="token operator">=</span> <span class="token string">'MARTIN'</span><span class="token punctuation">)</span></pre></td></tr></table></figure><ul>
+<li>查询平均工资高于公司平均工资的部门信息</li>
+</ul>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> e<span class="token punctuation">.</span>deptno<span class="token punctuation">,</span> d<span class="token punctuation">.</span>dname<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> emp e <span class="token keyword">JOIN</span> dept d  <span class="token keyword">ON</span> e<span class="token punctuation">.</span>deptno <span class="token operator">=</span> d<span class="token punctuation">.</span>deptno </pre></td></tr><tr><td data-num="3"></td><td><pre><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> deptno <span class="token keyword">HAVING</span> <span class="token function">AVG</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token operator">>=</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> <span class="token keyword">FROM</span> emp<span class="token punctuation">)</span></pre></td></tr></table></figure><h2 id="4-多行单列"><a class="markdownIt-Anchor" href="#4-多行单列">#</a> 4、多行单列</h2>
+<p>一般也用于 WHERE 子句中，子查询结果只有一列，但是有多行。使用多行比较运算符：</p>
+<ul>
+<li><code>IN</code> ：与列表中的任意一个值相等</li>
+<li><code>ANY</code> ：与子查询返回的任意一个值比较</li>
+<li><code>=ANY</code> ：此时和 IN 操作符相同</li>
+<li><code>&gt;ANY</code> ：大于子查询中最小的数据</li>
+<li><code>&lt;ANY</code> ：小于子查询中最大的数据</li>
+<li><code>ALL</code> ：与子查询返回的每一个值比较</li>
+<li><code>&gt;ALL</code> ：大于子查询中最大的数据</li>
+<li><code>&lt;ALL</code> ：小于子查询中最小的数据</li>
+</ul>
+<p>练习：</p>
+<ul>
+<li>查询工资等于部门经理（职位是 MANAGER）的员工信息。</li>
+</ul>
+<h2 id="5-多行多列"><a class="markdownIt-Anchor" href="#5-多行多列">#</a> 5、多行多列</h2>
+<p>子查询的结果是多行多列，一般会把子查询返回的结果当成一个临时表，接着在临时表上继续查询或者连接查询；</p>
+<p>注意：多行多列的子查询返回的结果<strong>必须要设置一个临时表名</strong>。</p>
+<p>练习：</p>
+<ul>
+<li>查询出每个部门的编号、名称、部门人数、平均工资</li>
+</ul>
+<p>可以先把每一个部门的编号，总人数，平均工资先查询出来：</p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span> deptno dno<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>empno<span class="token punctuation">)</span> count<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> avg  <span class="token keyword">FROM</span> emp <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> dno</pre></td></tr></table></figure><p>再 和 dept 表联合查询部门名称：</p>
+<figure class="highlight sql"><figcaption data-lang="SQL"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">SELECT</span>  dept<span class="token punctuation">.</span>deptno<span class="token punctuation">,</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>avg  </pre></td></tr><tr><td data-num="2"></td><td><pre><span class="token keyword">FROM</span> dept <span class="token keyword">JOIN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> deptno dno<span class="token punctuation">,</span> <span class="token function">COUNT</span><span class="token punctuation">(</span>empno<span class="token punctuation">)</span> count<span class="token punctuation">,</span> <span class="token function">AVG</span><span class="token punctuation">(</span>sal<span class="token punctuation">)</span> avg  <span class="token keyword">FROM</span> emp <span class="token keyword">GROUP</span> <span class="token keyword">BY</span> deptno<span class="token punctuation">)</span> <span class="token keyword">temp</span> <span class="token keyword">ON</span> dept<span class="token punctuation">.</span>deptno <span class="token operator">=</span> <span class="token keyword">temp</span><span class="token punctuation">.</span>dno</pre></td></tr></table></figure>
+      <div class="tags">
+          <a href="/tags/SQL/" rel="tag"><i class="ic i-tag"></i> SQL</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-02-11 20:31:31 20:31:31" itemprop="dateModified" datetime="2022-02-11T20:31:31+08:00">2022-02-11 20:31:31</time>
+  </span>
+  <span id="2022/02/11/mysql/" class="item leancloud_visitors" data-flag-title="SQL加强" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Vast 的博客 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Vast 的博客 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Vast 的博客 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Vast 的博客 <i class="ic i-at"><em>@</em></i>Vast 的博客
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://vastmiao.cn/2022/02/11/mysql/" title="SQL加强">http://vastmiao.cn/2022/02/11/mysql/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/02/11/debug/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclfdu6exj20zk0m87hw.jpg" title="debug">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> IDEA</span>
+  <h3>debug</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewkhf1zj20zk0m81kx.jpg" title="异常处理">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> JavaSE</span>
+  <h3>异常处理</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#sql%E5%8A%A0%E5%BC%BA"><span class="toc-number">1.</span> <span class="toc-text"> SQL 加强</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%89%E8%8C%83%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text"> 1、三范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-sql-%E5%88%86%E7%B1%BB"><span class="toc-number">1.2.</span> <span class="toc-text"> 2、SQL 分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#21-%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80dql"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 2.1、数据查询语言（DQL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#22-%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89%E8%AF%AD%E8%A8%80ddl"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 2.2、数据定义语言（DDL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#23-%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C%E8%AF%AD%E8%A8%80dml"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 2.3、数据操作语言（DML）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#24-%E4%BA%8B%E5%8A%A1%E5%A4%84%E7%90%86%E8%AF%AD%E8%A8%80tcl"><span class="toc-number">1.2.4.</span> <span class="toc-text"> 2.4、事务处理语言（TCL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#25-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8E%A7%E5%88%B6%E8%AF%AD%E8%A8%80dcl"><span class="toc-number">1.2.5.</span> <span class="toc-text"> 2.5、数据库控制语言（DCL）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#26-%E6%8C%87%E9%92%88%E6%8E%A7%E5%88%B6%E8%AF%AD%E8%A8%80ccl"><span class="toc-number">1.2.6.</span> <span class="toc-text"> 2.6、指针控制语言（CCL）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%83%E4%B9%A0%E7%9A%84%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text"> 3、练习的表结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C-%E5%8D%95%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.</span> <span class="toc-text"> 二、单表查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%A8%E5%88%97%E5%92%8C%E6%8A%95%E5%BD%B1%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.1.</span> <span class="toc-text"> 1、全列和投影查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B6%88%E9%99%A4%E9%87%8D%E5%A4%8D"><span class="toc-number">2.2.</span> <span class="toc-text"> 2、消除重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.3.</span> <span class="toc-text"> 3、算术运算符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%BF%87%E6%BB%A4%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.4.</span> <span class="toc-text"> 4、过滤查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#41-%E8%BF%87%E6%BB%A4%E6%9F%A5%E8%AF%A2%E5%80%BC%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.4.1.</span> <span class="toc-text"> 4.1、过滤查询值的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#42-%E7%A9%BA%E5%80%BC"><span class="toc-number">2.4.2.</span> <span class="toc-text"> 4.2、空值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#43-%E5%B8%B8%E7%94%A8%E7%AE%97%E6%9C%AF%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.4.3.</span> <span class="toc-text"> 4.3、常用算术比较运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#44-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.4.4.</span> <span class="toc-text"> 4.4、逻辑运算符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BB%93%E6%9E%9C%E6%8E%92%E5%BA%8F"><span class="toc-number">2.5.</span> <span class="toc-text"> 5、结果排序</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%A6%82%E8%BF%B0%E7%90%86%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text"> 三、多表查询概述（理解）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-number">3.1.</span> <span class="toc-text"> 1、为什么使用多表查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF"><span class="toc-number">3.2.</span> <span class="toc-text"> 2、笛卡尔积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E5%88%86%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text"> 3、多表查询分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B-%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text"> 四、内连接查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9A%90%E5%BC%8F%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.1.</span> <span class="toc-text"> 1、隐式内连接查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%98%BE%E5%BC%8F%E5%86%85%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.2.</span> <span class="toc-text"> 2、显式内连接查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94-%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.</span> <span class="toc-text"> 五、外连接查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%9C%80%E6%B1%82"><span class="toc-number">5.1.</span> <span class="toc-text"> 1、需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B7%A6%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.2.</span> <span class="toc-text"> 2、左外连接查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8F%B3%E5%A4%96%E8%BF%9E%E6%8E%A5%E6%9F%A5%E8%AF%A2"><span class="toc-number">5.3.</span> <span class="toc-text"> 3、右外连接查询</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD-%E5%88%86%E7%BB%84%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text"> 六、分组函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%87%BD%E6%95%B0%E5%88%86%E7%B1%BB"><span class="toc-number">6.1.</span> <span class="toc-text"> 1、函数分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%A4%9A%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-number">6.2.</span> <span class="toc-text"> 2、多行函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83-%E5%88%86%E7%BB%84%E6%9F%A5%E8%AF%A2"><span class="toc-number">7.</span> <span class="toc-text"> 七、分组查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%86%E7%BB%84%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8"><span class="toc-number">7.1.</span> <span class="toc-text"> 1、什么是分组及其应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%86%E7%BB%84%E8%AF%AD%E6%B3%95"><span class="toc-number">7.2.</span> <span class="toc-text"> 2、分组语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%88%86%E7%BB%84%E6%B3%A8%E6%84%8F"><span class="toc-number">7.3.</span> <span class="toc-text"> 3、使用分组注意</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%86%E7%BB%84%E9%99%90%E5%AE%9A"><span class="toc-number">7.4.</span> <span class="toc-text"> 4、分组限定</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB-%E5%8D%95%E8%A1%8C%E5%87%BD%E6%95%B0%E4%BA%86%E8%A7%A3"><span class="toc-number">8.</span> <span class="toc-text"> 八、单行函数（了解）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">8.1.</span> <span class="toc-text"> 1、日期函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%97%A5%E6%9C%9F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.2.</span> <span class="toc-text"> 2、日期转换为字符串</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%9D-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-number">9.</span> <span class="toc-text"> 九、子查询</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="toc-number">9.1.</span> <span class="toc-text"> 1、定义和作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%86%E7%B1%BB"><span class="toc-number">9.2.</span> <span class="toc-text"> 2、分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8D%95%E8%A1%8C%E5%8D%95%E5%88%97"><span class="toc-number">9.3.</span> <span class="toc-text"> 3、单行单列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%A4%9A%E8%A1%8C%E5%8D%95%E5%88%97"><span class="toc-number">9.4.</span> <span class="toc-text"> 4、多行单列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%A4%9A%E8%A1%8C%E5%A4%9A%E5%88%97"><span class="toc-number">9.5.</span> <span class="toc-text"> 5、多行多列</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/02/11/mysql/" rel="bookmark" title="SQL加强">SQL加强</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Vast 的博客"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Vast 的博客</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">17</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">13</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">22</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzEwNDUwNzgzOTk=" title="https:&#x2F;&#x2F;github.com&#x2F;1045078399"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3NDk3ODU5MTY=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1749785916"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwNDUwNzgzOTlAcXEuY29t" title="mailto:1045078399@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>友链</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/02/11/debug/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="异常处理">异常处理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/28/JavaBean/" title="JavaBean">JavaBean</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-2/" title="SQL_2">SQL_2</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/Redis%E6%80%BB%E7%BB%93/" title="Redis总结">Redis总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQLBasics/" title="分类于 SQL基础">SQL基础</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-1/" title="SQL_1">SQL_1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/01/IO/" title="IO">IO</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" title="多态">多态</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/MyBatis-Plus%E7%BF%BB%E9%A1%B5/" title="MyBatis-Plus翻页">MyBatis-Plus翻页</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" title="List&amp;Set&amp;Map的创建及遍历">List&Set&Map的创建及遍历</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/" title="分类于 开发工具">开发工具</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/idea/" title="分类于 IDEA">IDEA</a>
+</div>
+
+    <span><a href="/2022/02/11/debug/" title="debug">debug</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Vast 的博客 @ Vast Blogs</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS12YXN0">Vast</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/02/11/mysql/',
+    favicon: {
+      show: "淼",
+      hide: "淼"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9124faf20888f84ee730ba6366fa578d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</body>
+</html>
