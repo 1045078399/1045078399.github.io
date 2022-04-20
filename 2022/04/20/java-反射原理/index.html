@@ -24,30 +24,29 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
-  <meta name="keywords" content="Java,IO,文件拷贝" />
+  <meta name="keywords" content="总结,反射" />
 
 
-<link rel="canonical" href="http://vastmiao.cn/2022/02/01/IO/">
+<link rel="canonical" href="http://vastmiao.cn/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/">
 
 
-<meta name="description" content="# IO # 文件字节输入流读取文件内容的步骤： 1.创建流对象 2.创建一个缓存字节的容器数组 3.定义一个变量，保存实际读取的字节数 4.循环读取数据 5.操作保存数据的数组 6.关闭流  public class IODemo &amp;#123;    public static void main(String[] args)&amp;#123;        &#x2F;&#x2F; 从那些拿到文件        Fil">
+<meta name="description" content="# java 反射原理 # 反射的概念 反射: Refelection, 反射是 Java 的特征之一，允许运行中的 Java 程序获取自身信息，并可以操作类或者对象的内部属性通过反射，可以在运行时获得程序或者程序中的每一个类型的成员或成成员的信息程序中的对象一般都是在编译时就确定下来，Java 反射机制可以动态地创建对象并且调用相关属性，这些对象的类型在编译时是未知的也就是说，可以通过反射机制直">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IO">
-<meta property="og:url" content="http://vastmiao.cn/2022/02/01/IO/index.html">
+<meta property="og:title" content="java 反射深入理解">
+<meta property="og:url" content="http://vastmiao.cn/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Vast 的博客">
-<meta property="og:description" content="# IO # 文件字节输入流读取文件内容的步骤： 1.创建流对象 2.创建一个缓存字节的容器数组 3.定义一个变量，保存实际读取的字节数 4.循环读取数据 5.操作保存数据的数组 6.关闭流  public class IODemo &amp;#123;    public static void main(String[] args)&amp;#123;        &#x2F;&#x2F; 从那些拿到文件        Fil">
+<meta property="og:description" content="# java 反射原理 # 反射的概念 反射: Refelection, 反射是 Java 的特征之一，允许运行中的 Java 程序获取自身信息，并可以操作类或者对象的内部属性通过反射，可以在运行时获得程序或者程序中的每一个类型的成员或成成员的信息程序中的对象一般都是在编译时就确定下来，Java 反射机制可以动态地创建对象并且调用相关属性，这些对象的类型在编译时是未知的也就是说，可以通过反射机制直">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-01T05:18:05.000Z">
-<meta property="article:modified_time" content="2022-02-10T11:11:00.367Z">
+<meta property="article:published_time" content="2022-04-20T07:57:44.000Z">
+<meta property="article:modified_time" content="2022-04-20T08:48:56.909Z">
 <meta property="article:author" content="Vast 的博客">
-<meta property="article:tag" content="Java">
-<meta property="article:tag" content="IO">
-<meta property="article:tag" content="文件拷贝">
+<meta property="article:tag" content="总结">
+<meta property="article:tag" content="反射">
 <meta name="twitter:card" content="summary">
 
 
   <title>
-IO - JavaSE - Java - 计算机科学 |
+java 反射深入理解 - JavaSE - Java - 计算机科学 |
 Vast Blogs = Vast 的博客</title>
 <meta name="generator" content="Hexo 6.0.0"></head>
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -75,16 +74,16 @@ Vast Blogs = Vast 的博客</title>
         <div id="brand">
           <div class="pjax">
           
-  <h1 itemprop="name headline">IO
+  <h1 itemprop="name headline">java 反射深入理解
   </h1>
   
 <div class="meta">
-  <span class="item" title="创建时间：2022-02-01 13:18:05 13:18:05">
+  <span class="item" title="创建时间：2022-04-20 15:57:44 15:57:44">
     <span class="icon">
       <i class="ic i-calendar"></i>
     </span>
     <span class="text">发表于</span>
-    <time itemprop="dateCreated datePublished" datetime="2022-02-01T13:18:05+08:00">2022-02-01 13:18:05</time>
+    <time itemprop="dateCreated datePublished" datetime="2022-04-20T15:57:44+08:00">2022-04-20 15:57:44</time>
   </span>
 </div>
 
@@ -117,12 +116,12 @@ Vast Blogs = Vast 的博客</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew28b65j20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclj9410cj20zk0m8h12.jpg"></li>
         </ul>
       </div>
     </header>
@@ -159,7 +158,7 @@ Vast Blogs = Vast 的博客</title>
 </div>
 
     <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
-  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/02/01/IO/">
+  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/">
 
   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="image" content="/images/avatar.jpg">
@@ -174,20 +173,69 @@ Vast Blogs = Vast 的博客</title>
   <div class="body md" itemprop="articleBody">
     
 
-    <h1 id="io"><a class="markdownIt-Anchor" href="#io">#</a> IO</h1>
-<h2 id="文件字节输入流读取文件内容的步骤"><a class="markdownIt-Anchor" href="#文件字节输入流读取文件内容的步骤">#</a> 文件字节输入流读取文件内容的步骤：</h2>
-<pre><code>1.创建流对象
-2.创建一个缓存字节的容器数组
-3.定义一个变量，保存实际读取的字节数
-4.循环读取数据
-5.操作保存数据的数组
-6.关闭流
-</code></pre>
-<figure class="highlight java"><figcaption data-lang="java"></figcaption><table><tr><td data-num="1"></td><td><pre><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IODemo</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="2"></td><td><pre>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="3"></td><td><pre>        <span class="token comment">// 从那些拿到文件</span></pre></td></tr><tr><td data-num="4"></td><td><pre>        <span class="token class-name">File</span> file <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"文件路径"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="5"></td><td><pre>        <span class="token comment">// 文件放到哪里去</span></pre></td></tr><tr><td data-num="6"></td><td><pre>        <span class="token class-name">File</span> fileEnd <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">File</span><span class="token punctuation">(</span><span class="token string">"文件路径"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="7"></td><td><pre>        <span class="token keyword">try</span> <span class="token punctuation">(</span></pre></td></tr><tr><td data-num="8"></td><td><pre>                <span class="token comment">// 文件输入流</span></pre></td></tr><tr><td data-num="9"></td><td><pre>                <span class="token class-name">FileInputStream</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="10"></td><td><pre>                <span class="token comment">// 文件输出流</span></pre></td></tr><tr><td data-num="11"></td><td><pre>                <span class="token class-name">FileOutputStream</span> out <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>fileEnd<span class="token punctuation">)</span></pre></td></tr><tr><td data-num="12"></td><td><pre>        <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="13"></td><td><pre>            <span class="token comment">// 临时存放数据的容器</span></pre></td></tr><tr><td data-num="14"></td><td><pre>            <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> buf <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">1024</span><span class="token punctuation">]</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="15"></td><td><pre>            <span class="token comment">// 存放有效长度</span></pre></td></tr><tr><td data-num="16"></td><td><pre>            <span class="token keyword">int</span> len<span class="token punctuation">;</span></pre></td></tr><tr><td data-num="17"></td><td><pre>            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>len <span class="token operator">=</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="18"></td><td><pre>                <span class="token comment">// 拿到数据给输出流写出</span></pre></td></tr><tr><td data-num="19"></td><td><pre>                out<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="20"></td><td><pre>                out<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="21"></td><td><pre>            <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="22"></td><td><pre>        <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span><span class="token punctuation">&#123;</span></pre></td></tr><tr><td data-num="23"></td><td><pre>            e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></pre></td></tr><tr><td data-num="24"></td><td><pre>        <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="25"></td><td><pre>    <span class="token punctuation">&#125;</span></pre></td></tr><tr><td data-num="26"></td><td><pre><span class="token punctuation">&#125;</span></pre></td></tr></table></figure>
+    <h1 id="java-反射原理"><a class="markdownIt-Anchor" href="#java-反射原理">#</a> java 反射原理</h1>
+<h2 id="反射的概念"><a class="markdownIt-Anchor" href="#反射的概念">#</a> 反射的概念</h2>
+<p><strong>反射:</strong> Refelection, 反射是 Java 的特征之一，允许运行中的 Java 程序获取自身信息，并可以操作类或者对象的内部属性通过反射，可以在运行时获得程序或者程序中的每一个类型的成员或成成员的信息程序中的对象一般都是在编译时就确定下来，Java 反射机制可以动态地创建对象并且调用相关属性，这些对象的类型在编译时是未知的也就是说，可以通过反射机制直接创建对象，即使这个对象类型在编译时是未知的<br>
+<strong> Java 反射提供下列功能:</strong> 在运行时判断任意一个对象所属的类在运行时构造任意一个类的对象在运行时判断任意一个类所具有的成员变量和方法，可以通过反射调用 private 方法在运行时调用任意一个对象的方法</p>
+<h2 id="反射的原理"><a class="markdownIt-Anchor" href="#反射的原理">#</a> 反射的原理</h2>
+<p><strong>反射的核心:</strong> JVM 在运行时才动态加载类或者调用方法以及访问属性，不需要事先 (比如编译时) 知道运行对象是什么<br>
+<strong>类的加载:</strong> Java 反射机制是围绕 Class 类展开的首先要了解<strong>类的加载机制:</strong> JVM 使用 ClassLoader 将字节码文件，即 class 文件加载到方法区内存中 ClassLoader 类根据类的完全限定名加载类并返回一个 Class 对象</p>
+<p><strong>ReflectionData:</strong> 为了提高反射的性能，必须要提供缓存 class 类内部使用一个 useCaches 静态变量来标记是否使用缓存这个值可以通过外部的 sun.reflect.noCaches 配置是否禁用缓存 class 类内部提供了一个 ReflectionData 内部类用来存放反射数据的缓存，并声明了一个 reflectionData 域由于稍后进行按需延迟加载并缓存，所以这个域并没有指向一个实例化的 ReflectionData 对象</p>
+<h2 id="反射的主要用途"><a class="markdownIt-Anchor" href="#反射的主要用途">#</a> 反射的主要用途</h2>
+<p><strong>反射最重要的用途就是开发各种通用框架</strong> 很多框架都是配置化的，通过配置文件配置 Bean 为了保证框架的通用性，需要根据配置文件加载不同的对象或者类，调用不同的方法要运用反射，运行时动态加载需要加载的对象<br>
+<strong>反射是各种容器实现的核心</strong></p>
+<h2 id="反射的运用"><a class="markdownIt-Anchor" href="#反射的运用">#</a> 反射的运用</h2>
+<p><strong>反射可以用于:</strong></p>
+<ul>
+<li>判断对象所属的类</li>
+<li>获得 class 对象</li>
+<li>构造任意一个对象</li>
+<li>调用一个对象</li>
+<li>获得 Class 对象</li>
+<li>使用 Class 类的 forName 静态方法</li>
+<li>直接获取一个对象的 class</li>
+<li>调用对象的 getClass () 方法</li>
+<li>判断是否是某个类的实例<br>
+一般来说，使用 instanceof 关键字判断是否为某个类的实例</li>
+<li>在反射中，可以使用 Class 对象的 isInstance () 方法来判断是否为某个类的实例，这是一个 native 方法</li>
+<li>创建实例</li>
+<li>通过反射生成对象的实例主要有两种方式:</li>
+<li>使用 Class 对象的 newInstance () 方法来创建 Class 对象对应类的实例<br>
+先通过 Class 对象获取指定的 Constructor 对象，再调用 Constructor 对象的 newInstance () 方法来创建实例：可以用指定的构造器构造类的实例<br>
+获取方法<br>
+获取 Class 对象的方法集合，主要有三种方法:</li>
+<li>getDeclaredMethods (): 返回类或接口声明的所有方法：包括公共，保护，默认 (包) 访问和私有方法不包括继承的方法</li>
+<li>getMethods (): 返回某个类所有的 public 方法包括继承类的 public 方法</li>
+<li>getMethod (): 返回一个特定的方法第一个参数：方法名称后面的参数：方法的参数对应 Class 的对象</li>
+<li>通过 getMethods () 获取的方法可以获取到父类的方法</li>
+</ul>
+<h2 id="获取构造器信息"><a class="markdownIt-Anchor" href="#获取构造器信息">#</a> 获取构造器信息</h2>
+<ul>
+<li>通过<strong> Class</strong> 类的<strong> getConstructor</strong> 方法得到<strong> Constructor</strong> 类的一个实例</li>
+<li><strong>Constructor</strong> 类中<strong> newInstance</strong> 方法可以创建一个对象的实例</li>
+<li><strong>newInstance</strong> 方法可以根据传入的参数来调用对应的<strong> Constructor</strong> 创建对象的实例</li>
+<li>获取类的成员变量信息
+<ol>
+<li>**getFileds:** 获取公有的成员变量</li>
+<li>**getDeclaredFields:** 获取所有已声明的成员变量，但是不能得到父类的成员变量调用方法</li>
+<li>从类中获取一个方法后，可以使用 **invoke ()** 来调用这个方法</li>
+</ol>
+</li>
+<li>利用反射创建数组</li>
+<li>数组是 Java 中一种特殊的数据类型，可以赋值给一个<strong> Object Reference</strong></li>
+<li>利用反射创建数组的实例 Array 类是 java.lang.reflect.Array 类，通过 Array.newInstance () 创建数组对象</li>
+</ul>
+<h2 id="反射可以修改权限"><a class="markdownIt-Anchor" href="#反射可以修改权限">#</a> 反射可以修改权限</h2>
+<ul>
+<li>.setAccessible (true) 设置访问权限，将 private 修饰的方法变为 public</li>
+</ul>
+<h2 id="反射注意点"><a class="markdownIt-Anchor" href="#反射注意点">#</a> 反射注意点</h2>
+<p><strong>反射会额外消耗系统资源，如果不需要动态地创建一个对象，就不要使用反射</strong></p>
+<p><strong>反射调用方法时可以忽略权限检查。可能会破坏封装性而导致安全问题</strong></p>
+
       <div class="tags">
-          <a href="/tags/Java/" rel="tag"><i class="ic i-tag"></i> Java</a>
-          <a href="/tags/IO/" rel="tag"><i class="ic i-tag"></i> IO</a>
-          <a href="/tags/%E6%96%87%E4%BB%B6%E6%8B%B7%E8%B4%9D/" rel="tag"><i class="ic i-tag"></i> 文件拷贝</a>
+          <a href="/tags/%E6%80%BB%E7%BB%93/" rel="tag"><i class="ic i-tag"></i> 总结</a>
+          <a href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag"><i class="ic i-tag"></i> 反射</a>
       </div>
   </div>
 
@@ -199,9 +247,9 @@ Vast Blogs = Vast 的博客</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2022-02-10 19:11:00 19:11:00" itemprop="dateModified" datetime="2022-02-10T19:11:00+08:00">2022-02-10 19:11:00</time>
+    <time title="修改时间：2022-04-20 16:48:56 16:48:56" itemprop="dateModified" datetime="2022-04-20T16:48:56+08:00">2022-04-20 16:48:56</time>
   </span>
-  <span id="2022/02/01/IO/" class="item leancloud_visitors" data-flag-title="IO" title="阅读次数">
+  <span id="2022/04/20/java-反射原理/" class="item leancloud_visitors" data-flag-title="java 反射深入理解" title="阅读次数">
       <span class="icon">
         <i class="ic i-eye"></i>
       </span>
@@ -243,7 +291,7 @@ Vast Blogs = Vast 的博客</title>
   </li>
   <li class="link">
     <strong>本文链接：</strong>
-    <a href="http://vastmiao.cn/2022/02/01/IO/" title="IO">http://vastmiao.cn/2022/02/01/IO/</a>
+    <a href="http://vastmiao.cn/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" title="java 反射深入理解">http://vastmiao.cn/2022/04/20/java-反射原理/</a>
   </li>
   <li class="license">
     <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -262,22 +310,14 @@ Vast Blogs = Vast 的博客</title>
     <div class="item left">
       
 
-  <a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipevgoki5j20zk0m84qp.jpg" title="继承">
+  <a href="/2022/04/18/MyBatis-Plus%E7%BF%BB%E9%A1%B5/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="MyBatis-Plus翻页">
   <span class="type">上一篇</span>
-  <span class="category"><i class="ic i-flag"></i> JavaSE</span>
-  <h3>继承</h3>
+  <span class="category"><i class="ic i-flag"></i> 总结</span>
+  <h3>MyBatis-Plus翻页</h3>
   </a>
 
     </div>
     <div class="item right">
-      
-
-  <a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewr8iypj20zk0m8b29.jpg" title="List&amp;Set&amp;Map的创建及遍历">
-  <span class="type">下一篇</span>
-  <span class="category"><i class="ic i-flag"></i> JavaSE</span>
-  <h3>List&Set&Map的创建及遍历</h3>
-  </a>
-
     </div>
 </div>
 
@@ -294,11 +334,11 @@ Vast Blogs = Vast 的博客</title>
   <div class="panels">
     <div class="inner">
       <div class="contents panel pjax" data-title="文章目录">
-          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#io"><span class="toc-number">1.</span> <span class="toc-text"> IO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E8%8A%82%E8%BE%93%E5%85%A5%E6%B5%81%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text"> 文件字节输入流读取文件内容的步骤：</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text"> java 反射原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 反射的概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text"> 反射的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E4%B8%BB%E8%A6%81%E7%94%A8%E9%80%94"><span class="toc-number">1.3.</span> <span class="toc-text"> 反射的主要用途</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E8%BF%90%E7%94%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 反射的运用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%9E%84%E9%80%A0%E5%99%A8%E4%BF%A1%E6%81%AF"><span class="toc-number">1.5.</span> <span class="toc-text"> 获取构造器信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E6%9D%83%E9%99%90"><span class="toc-number">1.6.</span> <span class="toc-text"> 反射可以修改权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.7.</span> <span class="toc-text"> 反射注意点</span></a></li></ol></li></ol>
       </div>
       <div class="related panel pjax" data-title="系列文章">
         <ul>
-          <li><a href="/2022/01/28/JavaBean/" rel="bookmark" title="JavaBean">JavaBean</a></li><li><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" rel="bookmark" title="多态">多态</a></li><li><a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" rel="bookmark" title="继承">继承</a></li><li class="active"><a href="/2022/02/01/IO/" rel="bookmark" title="IO">IO</a></li><li><a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" rel="bookmark" title="List&Set&Map的创建及遍历">List&Set&Map的创建及遍历</a></li><li><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" rel="bookmark" title="反射">反射</a></li><li><a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="bookmark" title="异常处理">异常处理</a></li><li><a href="/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" rel="bookmark" title="java 反射深入理解">java 反射深入理解</a></li>
+          <li><a href="/2022/01/28/JavaBean/" rel="bookmark" title="JavaBean">JavaBean</a></li><li><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" rel="bookmark" title="多态">多态</a></li><li><a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" rel="bookmark" title="继承">继承</a></li><li><a href="/2022/02/01/IO/" rel="bookmark" title="IO">IO</a></li><li><a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" rel="bookmark" title="List&Set&Map的创建及遍历">List&Set&Map的创建及遍历</a></li><li><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" rel="bookmark" title="反射">反射</a></li><li><a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" rel="bookmark" title="异常处理">异常处理</a></li><li class="active"><a href="/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" rel="bookmark" title="java 反射深入理解">java 反射深入理解</a></li>
         </ul>
       </div>
       <div class="overview panel" data-title="站点概览">
@@ -383,12 +423,10 @@ Vast Blogs = Vast 的博客</title>
 
   <ul id="quick">
     <li class="prev pjax">
-        <a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
     </li>
     <li class="up"><i class="ic i-arrow-up"></i></li>
     <li class="down"><i class="ic i-arrow-down"></i></li>
     <li class="next pjax">
-        <a href="/2022/02/03/List&Set&Map%E7%9A%84%E5%88%9B%E5%BB%BA%E5%8F%8A%E9%81%8D%E5%8E%86/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
     </li>
     <li class="percent"></li>
   </ul>
@@ -410,10 +448,42 @@ Vast Blogs = Vast 的博客</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/SQL/" title="分类于 SQL">SQL</a>
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
 </div>
 
-    <span><a href="/2022/02/05/SQL-2/" title="SQL_2">SQL_2</a></span>
+    <span><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" title="多态">多态</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/11/mysql/" title="SQL加强">SQL加强</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
+</div>
+
+    <span><a href="/2022/02/12/%E9%9D%A2%E8%AF%95%E9%A2%98-1/" title="面试题-1">面试题-1</a></span>
   </li>
 
       
@@ -427,7 +497,7 @@ Vast Blogs = Vast 的博客</title>
 <a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
 </div>
 
-    <span><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" title="多态">多态</a></span>
+    <span><a href="/2022/01/28/JavaBean/" title="JavaBean">JavaBean</a></span>
   </li>
 
       
@@ -448,52 +518,10 @@ Vast Blogs = Vast 的博客</title>
   <li class="item">
     
 <div class="breadcrumb">
-<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
-</div>
-
-    <span><a href="/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" title="面试题随笔1">面试题随笔1</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
-</div>
-
-    <span><a href="/2022/04/18/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="跨域问题总结">跨域问题总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
 <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="分类于 博客搭建">博客搭建</a>
 </div>
 
     <span><a href="/2022/01/21/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="第一篇文章">第一篇文章</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
-<i class="ic i-angle-right"></i>
-<a href="/categories/computer-science/SQL/SQLBasics/" title="分类于 SQL基础">SQL基础</a>
-</div>
-
-    <span><a href="/2022/02/05/SQL-1/" title="SQL_1">SQL_1</a></span>
   </li>
 
       
@@ -507,7 +535,21 @@ Vast Blogs = Vast 的博客</title>
 <a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
 </div>
 
-    <span><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" title="反射">反射</a></span>
+    <span><a href="/2022/01/30/%E7%BB%A7%E6%89%BF/" title="继承">继承</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="异常处理">异常处理</a></span>
   </li>
 
       
@@ -535,7 +577,7 @@ Vast Blogs = Vast 的博客</title>
 <a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
 </div>
 
-    <span><a href="/2022/02/01/IO/" title="IO">IO</a></span>
+    <span><a href="/2022/02/04/%E5%8F%8D%E5%B0%84/" title="反射">反射</a></span>
   </li>
 
   </ul>
@@ -566,7 +608,7 @@ Vast Blogs = Vast 的博客</title>
   </div>
 <script data-config type="text/javascript">
   var LOCAL = {
-    path: '2022/02/01/IO/',
+    path: '2022/04/20/java-反射原理/',
     favicon: {
       show: "淼",
       hide: "淼"
