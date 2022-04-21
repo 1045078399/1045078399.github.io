@@ -1,0 +1,691 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Vast 的博客" href="http://vastmiao.cn/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Vast 的博客" href="http://vastmiao.cn/atom.xml" />
+<link rel="alternate" type="application/json" title="Vast 的博客" href="http://vastmiao.cn/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Java,Spring,面试题,随笔" />
+
+
+<link rel="canonical" href="http://vastmiao.cn/2022/04/21/Spring-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+
+
+<meta name="description" content="# Spring # Controller 是不是单列  默认是单例的，单例对象接受请求访问的时候是线程安全的，而且不用重复创建，性能高；  # Spring 两大特性的了解？   Spring 的核心特性就是 IOC 和 AOP；  IOC（Inversion of Control），即 “控制反转”； AOP（Aspect-OrientedProgramming），即 “面向切面编程”;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 相关问题">
+<meta property="og:url" content="http://vastmiao.cn/2022/04/21/Spring-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Vast 的博客">
+<meta property="og:description" content="# Spring # Controller 是不是单列  默认是单例的，单例对象接受请求访问的时候是线程安全的，而且不用重复创建，性能高；  # Spring 两大特性的了解？   Spring 的核心特性就是 IOC 和 AOP；  IOC（Inversion of Control），即 “控制反转”； AOP（Aspect-OrientedProgramming），即 “面向切面编程”;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-21T10:04:44.000Z">
+<meta property="article:modified_time" content="2022-04-21T10:37:37.741Z">
+<meta property="article:author" content="Vast 的博客">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="面试题">
+<meta property="article:tag" content="随笔">
+<meta name="twitter:card" content="summary">
+
+
+  <title>
+Spring 相关问题 - Java面试题 - 面试题 - Spring - Java - 计算机科学 |
+Vast Blogs = Vast 的博客</title>
+<meta name="generator" content="Hexo 6.0.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Spring 相关问题
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-04-21 18:04:44 18:04:44">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-04-21T18:04:44+08:00">2022-04-21 18:04:44</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Vast Blogs</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciub8ja1j20zk0m81ky.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipey0a334j20zk0m8qpt.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicis081o9j20zk0m8dmr.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexoj0moj20zk0m8kgu.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/" itemprop="item" rel="index" title="分类于 计算机科学"><span itemprop="name">计算机科学</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Java/" itemprop="item" rel="index" title="分类于 Java"><span itemprop="name">Java</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Java/Spring/" itemprop="item" rel="index" title="分类于 Spring"><span itemprop="name">Spring</span></a>
+<meta itemprop="position" content="3" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Interview/" itemprop="item" rel="index" title="分类于 面试题"><span itemprop="name">面试题</span></a>
+<meta itemprop="position" content="4" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/computer-science/Interview/JavaInterview/" itemprop="item" rel="index" title="分类于 Java面试题"><span itemprop="name">Java面试题</span></a>
+<meta itemprop="position" content="5" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://vastmiao.cn/2022/04/21/Spring-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="Vast 的博客">
+    <meta itemprop="description" content=", ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Vast 的博客">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="spring"><a class="markdownIt-Anchor" href="#spring">#</a> Spring</h1>
+<h2 id="controller-是不是单列"><a class="markdownIt-Anchor" href="#controller-是不是单列">#</a> Controller 是不是单列</h2>
+<ul>
+<li>默认是单例的，单例对象接受请求访问的时候是线程安全的，而且不用重复创建，性能高；</li>
+</ul>
+<h2 id="spring两大特性的了解"><a class="markdownIt-Anchor" href="#spring两大特性的了解">#</a> Spring 两大特性的了解？</h2>
+<ul>
+<li>
+<p>Spring 的核心特性就是 IOC 和 AOP；</p>
+<ol>
+<li>IOC（Inversion of Control），即 “控制反转”；</li>
+<li>AOP（Aspect-OrientedProgramming），即 “面向切面编程”;</li>
+</ol>
+</li>
+<li>
+<p>IoC（控制反转）是 Spring 的一个容器，他不是一种技术，而是一种思想，依旧是基于面向对象编程的。它能指导我们怎么样设计出松耦合、更优良的程序；</p>
+<p>&amp;emps; 简单来说，如果现在有两个（甚至更多）类，A 类和 B 类，A 类要引用 B 类中的某个方法，传统编程是在 A 类中实例化一个 B 类，也就是通过 new，然后调方法，而我们知道，代码高耦合最大的原因就是用了 new。利用 Spring 框架就将实例化的过程交给了 IoC 容器，通过配置文件中的设置 Bean 或者 B 类中添加注解，A 类可以不能 new 通过 ApplicationContext 的 getBean 方法得到实例，然后打点调方法就可以了，减少了两个类之间的耦合度</p>
+</li>
+<li>
+<p>IoC 三种注入方式：(1）接口注入（2）构造方法注入。时效性好，但是灵活性差。（3）赋值方式注入。时效性差，但是灵活性好，需要有 set 方法。</p>
+</li>
+<li>
+<p>**AOP (面向接口编程) **  ，同样的，他也是一种思想，而不是技术。和 OOP（面向对象编程）相比较，AOP 是对 OOP 的补充。OOP 是静态的抽象，而 AOP 是动态的抽象。关于 AOP 的概念，简单来说就是将一个工程中与源代码无关，但是很多地方都要用，抽出来也不影响源代码上下文的那一部分代码抽出来，然后要用的时候就织入进去，进行使用，至于是在指定的代码之前使用还是之后又或者异常使用等，可以动态的进行；</p>
+</li>
+</ul>
+<h2 id="spring动态代理的方式有几种-他们之间有什么区别"><a class="markdownIt-Anchor" href="#spring动态代理的方式有几种-他们之间有什么区别">#</a> Spring 动态代理的方式有几种，他们之间有什么区别</h2>
+<ul>
+<li>
+<p>JDK 动态代理，基于接口 (默认代理模式)</p>
+</li>
+<li>
+<p>CGLIB 动态代理（若要使用需要进行配置）</p>
+</li>
+<li>
+<p>区别:</p>
+<ul>
+<li>jdk 的代理对象与被代理对象实现了同一接口，底层通过 clone () 方法，将实现类的方法复制过来在按照 invoke 中的配置对方法进行增强。</li>
+<li>cglib 代理则是代理对象继承了被代理对象的方法，然后自身进行增强。这两种代理思想在外来的自动生成代码方向会经常被使用，实现完全体代码的复用性</li>
+</ul>
+</li>
+<li>
+<p>两种方式的对比和选择:</p>
+<ul>
+<li>
+<p>若目标对象实现了若干接口，spring 使用 JDK 的 java.lang.reflect.Proxy 类代理。</p>
+<p>优点：因为有接口，所以使系统更加松耦合</p>
+<p>缺点：为每一个目标类创建接口</p>
+</li>
+<li>
+<p>若目标对象没有实现任何接口，spring 使用 CGLIB 库生成目标对象的子类。</p>
+<p>优点：因为代理类与目标类是继承关系，所以不需要有接口的存在。</p>
+<p>缺点：因为没有使用接口，所以系统的耦合性没有使用 JDK 的动态代理好</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="对mybatis的缓存的理解"><a class="markdownIt-Anchor" href="#对mybatis的缓存的理解">#</a> 对 Mybatis 的缓存的理解</h2>
+<ul>
+<li>MyBatis 的缓存分为一级缓存和二级缓存，一级缓存放在 session 里面，默认就有，二级缓存放在它的命名空间里，默认是打开的，使用二级缓存属性类需要实现 Serializable 序列化接口 (可用来保存对象的状态), 可在它的映射文件中配置 &lt; cache/&gt;</li>
+</ul>
+<h2 id="mybatis的半orm的原理"><a class="markdownIt-Anchor" href="#mybatis的半orm的原理">#</a> mybatis 的半 ORM 的原理</h2>
+<ul>
+<li><strong>加载配置：</strong> 配置来源于两个地方，一是配置文件，一是 Java 代码的注解，将 SQL 的配置信息加载成为一个个 MappedStatement 对象（包括了传入参数映射配置、执行的 SQL 语句、结果映射配置），存储在内存中。</li>
+<li>**SQL 解析：** 当 API 接口层接收到调用请求时，会接收到传入 SQL 的 ID 和传入对象（可以是 Map、JavaBean 或者基本数据类型），Mybatis 会根据 SQL 的 ID 找到对应的 MappedStatement，然后根据传入参数对象对 MappedStatement 进行解析，解析后可以得到最终要执行的 SQL 语句和参。</li>
+<li><strong>SQL 执行：</strong> 将最终得到的 SQL 和参数拿到数据库进行执行，得到操作数据库的结果。 结果映射：将操作数据库的结果按照映射的配置进行转换，可以转换成 HashMap、JavaBean 或者基本数据类型，并将最终结果返回。</li>
+</ul>
+<h2 id="spring-mvc的原理"><a class="markdownIt-Anchor" href="#spring-mvc的原理">#</a> Spring MVC 的原理</h2>
+<ol>
+<li>用户发送出请求到前端控制器 DispatcherServlet</li>
+<li>DispatcherServlet 收到请求调用 HandlerMapping（处理器映射器）</li>
+<li>HandlerMapping 找到具体的处理器 (可查找 xml 配置或注解配置)</li>
+<li>生成处理器对象及处理器拦截器 (如果有)，再一起返回给 DispatcherServlet</li>
+<li>HandlerAdapter 经过适配调用具体的处理器（Handler/Controller）</li>
+<li>Controller 执行完成返回 ModelAndView 对象</li>
+<li>HandlerAdapter 将 Controller 执行结果 ModelAndView 返回给 DispatcherServlet</li>
+<li>DispatcherServlet 将 ModelAndView 传给 ViewReslover（视图解析器）</li>
+<li>ViewReslover 解析后返回具体 View（视图）</li>
+<li>DispatcherServlet 根据 View 进行渲染视图（即将模型数据填充至视图中）</li>
+<li>DispatcherServlet 响应用户</li>
+</ol>
+<h3 id="mvc架构模式"><a class="markdownIt-Anchor" href="#mvc架构模式">#</a> MVC 架构模式</h3>
+<ul>
+<li>MVC: Model View Controller 模型 - 视图 - 控制器</li>
+<li>视图：用户看到并与之交互的界面</li>
+<li>模型：表示企业数据和业务规则。在 MVC 的 3 个部件中，模型拥有最多的处理任务。被模型返回的数据是独立的，与数据格式无关。这样的一个模式能够为多个视图提供数据，这样一来模型的代码只需要写一次便能够被多个视图重用，减少了代码的重复性。</li>
+<li>控制器：接受用户的输入并调用相应的模型和视图来完成用户的需求，所以当用户点击 web 页面中的超链接和发送表单时，控制器本身不输出任何东西和做任何处理。它只是接收请求并根据请求来调用哪个模型去处理请求，然后在决定用哪个视图来显示返回的数据。</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Java/" rel="tag"><i class="ic i-tag"></i> Java</a>
+          <a href="/tags/Spring/" rel="tag"><i class="ic i-tag"></i> Spring</a>
+          <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="tag"><i class="ic i-tag"></i> 面试题</a>
+          <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"><i class="ic i-tag"></i> 随笔</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-04-21 18:37:37 18:37:37" itemprop="dateModified" datetime="2022-04-21T18:37:37+08:00">2022-04-21 18:37:37</time>
+  </span>
+  <span id="2022/04/21/Spring-相关问题/" class="item leancloud_visitors" data-flag-title="Spring 相关问题" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="Vast 的博客 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="Vast 的博客 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="Vast 的博客 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>Vast 的博客 <i class="ic i-at"><em>@</em></i>Vast 的博客
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://vastmiao.cn/2022/04/21/Spring-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" title="Spring 相关问题">http://vastmiao.cn/2022/04/21/Spring-相关问题/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclwrdwyaj20zk0m8are.jpg" title="java 反射深入理解">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> JavaSE</span>
+  <h3>java 反射深入理解</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#spring"><span class="toc-number">1.</span> <span class="toc-text"> Spring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#controller-%E6%98%AF%E4%B8%8D%E6%98%AF%E5%8D%95%E5%88%97"><span class="toc-number">1.1.</span> <span class="toc-text"> Controller 是不是单列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E4%B8%A4%E5%A4%A7%E7%89%B9%E6%80%A7%E7%9A%84%E4%BA%86%E8%A7%A3"><span class="toc-number">1.2.</span> <span class="toc-text"> Spring 两大特性的了解？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E7%9A%84%E6%96%B9%E5%BC%8F%E6%9C%89%E5%87%A0%E7%A7%8D-%E4%BB%96%E4%BB%AC%E4%B9%8B%E9%97%B4%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.3.</span> <span class="toc-text"> Spring 动态代理的方式有几种，他们之间有什么区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9mybatis%E7%9A%84%E7%BC%93%E5%AD%98%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.4.</span> <span class="toc-text"> 对 Mybatis 的缓存的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mybatis%E7%9A%84%E5%8D%8Aorm%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text"> mybatis 的半 ORM 的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring-mvc%E7%9A%84%E5%8E%9F%E7%90%86"><span class="toc-number">1.6.</span> <span class="toc-text"> Spring MVC 的原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mvc%E6%9E%B6%E6%9E%84%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.6.1.</span> <span class="toc-text"> MVC 架构模式</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/02/12/%E9%9D%A2%E8%AF%95%E9%A2%98-1/" rel="bookmark" title="面试题-1">面试题-1</a></li><li><a href="/2022/04/18/Redis%E6%80%BB%E7%BB%93/" rel="bookmark" title="Redis总结">Redis总结</a></li><li><a href="/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" rel="bookmark" title="面试题随笔1">面试题随笔1</a></li><li class="active"><a href="/2022/04/21/Spring-%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" rel="bookmark" title="Spring 相关问题">Spring 相关问题</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="Vast 的博客"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">Vast 的博客</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">19</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">14</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">23</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tLzEwNDUwNzgzOTk=" title="https:&#x2F;&#x2F;github.com&#x2F;1045078399"><i class="ic i-github"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPTE3NDk3ODU5MTY=" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;1749785916"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item email" data-url="bWFpbHRvOjEwNDUwNzgzOTlAcXEuY29t" title="mailto:1045078399@qq.com"><i class="ic i-envelope"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <a href="/about/" rel="section"><i class="ic i-user"></i>关于</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/links/" rel="section"><i class="ic i-magic"></i>友链</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/02/11/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="异常处理">异常处理</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/29/%E5%A4%9A%E6%80%81/" title="多态">多态</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/01/28/JavaBean/" title="JavaBean">JavaBean</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
+</div>
+
+    <span><a href="/2022/04/18/Redis%E6%80%BB%E7%BB%93/" title="Redis总结">Redis总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/" title="分类于 面试题">面试题</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Interview/JavaInterview/" title="分类于 Java面试题">Java面试题</a>
+</div>
+
+    <span><a href="/2022/04/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E9%9A%8F%E7%AC%941/" title="面试题随笔1">面试题随笔1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/summarize/" title="分类于 总结">总结</a>
+</div>
+
+    <span><a href="/2022/04/18/MyBatis-Plus%E7%BF%BB%E9%A1%B5/" title="MyBatis-Plus翻页">MyBatis-Plus翻页</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SQL/" title="分类于 SQL">SQL</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-2/" title="SQL_2">SQL_2</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/" title="分类于 SQL">SQL</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/SQL/SQLBasics/" title="分类于 SQL基础">SQL基础</a>
+</div>
+
+    <span><a href="/2022/02/05/SQL-1/" title="SQL_1">SQL_1</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/" title="分类于 Java">Java</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Java/JavaSE/" title="分类于 JavaSE">JavaSE</a>
+</div>
+
+    <span><a href="/2022/04/20/java-%E5%8F%8D%E5%B0%84%E5%8E%9F%E7%90%86/" title="java 反射深入理解">java 反射深入理解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/computer-science/" title="分类于 计算机科学">计算机科学</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/" title="分类于 开发工具">开发工具</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/computer-science/Tools/idea/" title="分类于 IDEA">IDEA</a>
+</div>
+
+    <span><a href="/2022/02/11/debug/" title="debug">debug</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Vast 的博客 @ Vast Blogs</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS12YXN0">Vast</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/04/21/Spring-相关问题/',
+    favicon: {
+      show: "淼",
+      hide: "淼"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+  <script data-pjax>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?9124faf20888f84ee730ba6366fa578d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</body>
+</html>
